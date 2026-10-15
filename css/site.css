@@ -228,7 +228,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent-text);outlin
 .h2{font-family:var(--font-head);font-weight:400;font-size:var(--fs-h2);line-height:1.2;text-wrap:balance}
 .sub{margin-top:clamp(14px, 1.2vw, 24px);max-width:var(--measure);font-size:var(--fs-lead);line-height:1.71;color:var(--muted)}
 /* על הרקע האפור, האפור הרגיל יורד מתחת ל-4.5, ולכן התווית והמשנה מתכהים שם */
-:is(.how,.svc,.journal) :is(.eyebrow,.sub){color:var(--muted-strong)}
+:is(.how,.svc,.journal,.htl,.exp) :is(.eyebrow,.sub){color:var(--muted-strong)}
 
 /* ===== שלוש דלתות + השמש על הקשת (MV:g25) ===== */
 .dest{padding-top:var(--sec)}
@@ -566,7 +566,9 @@ html.a11y-contrast :is(a,summary,.tlink,.hlink,.cta-form){color:#ffe14d!importan
 html.a11y-contrast :is(.btn,.fab,.a11y-opts button[aria-pressed="true"]){background:#ffe14d!important;color:#000!important}
 html.a11y-contrast :is(.btn,.fab) *{background:transparent!important;color:#000!important}
 html.a11y-contrast :is(.hero-scrim,.door-media,.svc-lead,.moment-cap)::after,html.a11y-contrast .moment-cap::before{display:none}
-html.a11y-contrast .hero-media,html.a11y-contrast .moment-media,html.a11y-contrast .svc-lead img,html.a11y-contrast .door-media img{opacity:.35}
+html.a11y-contrast .hero-media,html.a11y-contrast .moment-media,html.a11y-contrast .svc-lead img,html.a11y-contrast .door-media img,html.a11y-contrast .xp-media img{opacity:.35}
+html.a11y-contrast :is(.heart,.ml-btn,.htl-tab[aria-selected="true"]){background:#ffe14d!important;color:#000!important}
+html.a11y-contrast :is(.heart,.ml-btn) *{background:transparent!important;color:#000!important}
 html.a11y-gray{filter:grayscale(1)}
 html.a11y-invert{filter:invert(1) hue-rotate(180deg)}
 html.a11y-invert :is(img,video){filter:invert(1) hue-rotate(180deg)}
@@ -641,6 +643,160 @@ html.a11y-cursor,html.a11y-cursor *{cursor:url("data:image/svg+xml,%3Csvg xmlns=
 /* בעמוד התודה המשפט הוא גוף, לא פתיח */
 .thx .nf-sub{font-size:var(--fs-body);line-height:1.75}
 @media (max-width:767px){.nf{grid-template-columns:1fr;min-height:0}.nf-media{order:-1}.nf-act .btn{flex:1 1 100%}}
+
+/* ===== עמוד יעד (סיישל) ===== */
+.hero-chips{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px 10px}
+.hero-chips li{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:6px 14px;border-radius:var(--r-control);font-size:var(--fs-small);font-weight:500;line-height:1.3;
+  background:rgb(var(--shade) / .3);box-shadow:inset 0 0 0 1px rgba(255,255,255,.34);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+@media (max-width:767px){.hero-chips{display:none}}
+.hero-chips .ic{width:16px;height:16px;flex:none}
+
+/* איים: שלוש דלתות שמחובר ביניהן מסלול מקווקו, וסירה שעוברת בו בגלילה (g25) */
+.isl-route{position:relative;height:clamp(84px, 8vw, 150px);margin:clamp(32px, 3.6vw, 88px) calc(var(--gap-m) / -2) clamp(10px, 1vw, 20px)}
+.isl-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.route-path{fill:none;stroke:#cfd5da;stroke-width:1.5;stroke-dasharray:4 7;stroke-linecap:round;vector-effect:non-scaling-stroke}
+/* הנקודות והתוויות ממוקמות באחוזים מהשמאל, כמו המסלול ב-SVG */
+.route-dot{position:absolute;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#fff;box-shadow:0 0 0 2px var(--accent)}
+.route-lbl{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap;font-size:calc(14px * var(--a11y-scale));font-weight:500;color:var(--muted-strong)}
+.route-lbl.lo{top:auto;bottom:0}
+.boat{position:absolute;top:0;left:0; /* qa-allow: physical. MotionPathPlugin ממקם לפי x/y מהפינה השמאלית העליונה */width:48px;height:48px;border-radius:50%;background:#fff;
+  box-shadow:var(--shadow-soft),0 0 0 6px var(--tint-12);display:grid;place-items:center;color:var(--accent);will-change:transform}
+.boat .ic{width:24px;height:24px}
+.isl-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:var(--gap-m)}
+.isl{display:flex;flex-direction:column;gap:clamp(12px, 1vw, 20px)}
+.isl-text{max-width:46ch;color:var(--muted-strong);line-height:1.75}
+.isl-fit{max-width:46ch;font-size:var(--fs-small);line-height:1.6;color:var(--muted-strong);padding-top:12px;border-top:1px solid var(--border)}
+.isl-fit b{font-weight:600;color:var(--ink)}
+.isl-hop{display:none}
+.isl-foot{margin-top:clamp(40px, 3.6vw, 88px);display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px}
+.isl-foot p{max-width:var(--measure);font-size:var(--fs-lead);line-height:1.6}
+@media (max-width:767px){
+  .isl-route{display:none}
+  .isl-grid{grid-template-columns:1fr;gap:0}
+  .isl .door-media{aspect-ratio:4/3}
+  .isl-hop{display:flex;align-items:center;gap:12px;padding:20px 0;font-size:calc(14px * var(--a11y-scale));font-weight:500;color:var(--muted-strong)}
+  .isl-hop::before,.isl-hop::after{content:"";flex:1;border-top:1.5px dashed #cfd5da}
+  .isl-hop-ic{order:-1;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--tint-12);color:var(--accent-text)}
+  .isl-hop-ic .ic{width:18px;height:18px}
+  .isl-hop::before{order:-2}
+  .isl-foot .btn{width:100%}
+}
+
+/* לבבות: הוספה לרשימה שלי */
+.heart{position:absolute;top:8px;inset-inline-end:8px;z-index:2;width:44px;height:44px;border:0;border-radius:8px;display:grid;place-items:center;cursor:pointer;
+  background:#fff;color:var(--ink);box-shadow:var(--shadow-soft);transition:transform .15s var(--ease),color .15s var(--ease)}
+.heart .ic{grid-area:1/1;width:20px;height:20px}
+.heart .ic-on{opacity:0;color:var(--btn-solid);transform:scale(.6);transition:opacity .2s var(--ease),transform .3s var(--ease)}
+.heart[aria-pressed="true"] .ic-on{opacity:1;transform:none}
+.heart[aria-pressed="true"] .ic-off{opacity:0}
+.heart:active{transform:scale(.92)}
+.heart:focus-visible{outline:2px solid var(--accent-text);outline-offset:3px}
+
+/* מלונות: לשוניות לפי סוג החופשה; כמה כרטיסים שיהיו, הגריד מחזיק */
+.htl{background:var(--surface-muted)}
+.htl-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;margin-top:clamp(32px, 3vw, 64px)}
+.htl-bar .ph-note{margin-top:0}
+.htl-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.htl-tabs[hidden]{display:none}
+.htl-tab{min-height:44px;padding:0 18px;border:0;border-radius:var(--r-control);background:#fff;font:inherit;font-size:calc(15px * var(--a11y-scale));font-weight:500;color:var(--ink);cursor:pointer;
+  box-shadow:inset 0 0 0 1px var(--border-2);transition:background .18s var(--ease),color .18s var(--ease),box-shadow .18s var(--ease)}
+.htl-tab[aria-selected="true"]{background:var(--btn-solid);color:#fff;box-shadow:none}
+.htl-tab:focus-visible{outline:2px solid var(--accent-text);outline-offset:2px}
+@media (hover:hover) and (pointer:fine){.htl-tab[aria-selected="false"]:hover{box-shadow:inset 0 0 0 1px var(--btn-solid)}}
+.htl-grid{list-style:none;padding:0;margin-top:clamp(24px, 2vw, 40px);display:grid;grid-template-columns:repeat(3, 1fr);gap:clamp(40px, 3vw, 64px) var(--gap-m)}
+.hcard{display:flex;flex-direction:column;gap:8px}
+.hcard[hidden]{display:none}
+.hcard-media{position:relative;margin-bottom:8px}
+.hcard-media .shot-frame{aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#e9ecef 0 14px,#fff 14px 28px)}
+.hcard-fit{font-size:var(--fs-small);font-weight:500;color:var(--accent-text)}
+.hcard-name{font-size:var(--fs-h3);font-weight:500;line-height:1.35}
+.hcard-ph{font-size:var(--fs-small);font-weight:400;color:var(--muted-strong)}
+.hcard-where{font-size:var(--fs-small);color:var(--muted-strong)}
+.hcard-why{color:var(--muted-strong);line-height:1.7}
+.hcard .tlink{margin-top:auto;align-self:start}
+.htl-more{margin-top:clamp(32px, 3vw, 56px);max-width:var(--measure);color:var(--muted-strong)}
+@media (max-width:1023px){.htl-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:767px){.htl-grid{grid-template-columns:1fr}.htl-tabs{flex-wrap:nowrap;overflow-x:auto;margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter);scrollbar-width:none}.htl-tab{flex:none}}
+
+/* ככה זה עובד, בקצרה: שלושה צעדים בשורה */
+.steps-grid{list-style:none;padding:0;margin-top:clamp(32px, 3vw, 64px);display:grid;grid-template-columns:repeat(3, 1fr);gap:var(--gap-m);counter-reset:none}
+.steps-grid li{display:grid;align-content:start;gap:10px;padding-top:20px;border-top:1px solid var(--border-2)}
+.steps-grid .how-num{background:var(--btn-solid);color:#fff}
+.steps-grid h3{font-size:var(--fs-h3);font-weight:500;line-height:1.4}
+.steps-grid p{color:var(--muted-strong);line-height:1.7}
+.steps-note{display:flex;align-items:center;gap:12px;margin-top:clamp(32px, 3vw, 56px);padding:16px var(--pad-card);border-radius:var(--r-card);background:var(--tint-12);color:var(--accent-text);font-weight:500;max-width:max-content}
+.steps-note .ic{width:22px;height:22px;flex:none}
+@media (max-width:767px){.steps-grid{grid-template-columns:1fr}.steps-note{max-width:none;align-items:flex-start}}
+.rev-lead{margin-top:clamp(24px, 2vw, 40px);font-weight:500}
+
+/* חוויות: גריד בדסקטופ, מסדרון אופקי בטלפון */
+.exp{background:var(--surface-muted)}
+.exp-grid{list-style:none;padding:0;margin-top:clamp(32px, 3vw, 64px);display:grid;grid-template-columns:repeat(4, 1fr);gap:clamp(40px, 3vw, 64px) var(--gap-m)}
+.exp-grid:focus-visible{outline:2px solid var(--accent-text);outline-offset:6px}
+.xp{display:flex;flex-direction:column;gap:8px}
+.xp-media{position:relative;aspect-ratio:4/5;border-radius:var(--r-card);overflow:hidden;background:var(--border-2);margin-bottom:8px}
+.xp-media img{width:100%;height:100%;object-fit:cover}
+.xp h3{font-size:var(--fs-h3);font-weight:500;line-height:1.35}
+.xp p{color:var(--muted-strong);line-height:1.7;font-size:calc(16px * var(--a11y-scale))}
+.xp .tlink{margin-top:auto;align-self:start}
+@media (max-width:1023px){.exp-grid{grid-template-columns:repeat(3, 1fr)}}
+@media (max-width:767px){
+  .exp-grid{display:flex;overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-inline:var(--gutter);margin-inline:calc(var(--gutter) * -1);padding:4px var(--gutter) 12px;scrollbar-width:none}
+  .exp-grid::-webkit-scrollbar{display:none}
+  .xp{flex:0 0 78vw;scroll-snap-align:start}
+}
+
+/* שאלות נפוצות: אקורדיון של details */
+.faq-grid{display:grid;grid-template-columns:5fr 7fr;gap:var(--gap-m);align-items:start}
+.faq-head{position:sticky;top:calc(var(--header-h) + 24px)}
+.faq-list{border-top:1px solid var(--border-2)}
+.qa{border-bottom:1px solid var(--border-2)}
+.qa summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;padding:16px 0;cursor:pointer;list-style:none;font-size:var(--fs-h3);font-weight:500;line-height:1.4}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary:focus-visible{outline:2px solid var(--accent-text);outline-offset:2px;border-radius:var(--r-inner)}
+.qa-x{position:relative;flex:none;width:36px;height:36px;border-radius:50%;background:var(--surface-muted);transition:background .2s var(--ease)}
+.qa-x::before,.qa-x::after{content:"";position:absolute;top:50%;left:50%; /* qa-allow: physical. מרכוז של פלוס סימטרי */width:14px;height:1.5px;transform:translate(-50%,-50%);background:currentColor;transition:transform .25s var(--ease)}
+.qa-x::after{transform:translate(-50%,-50%) rotate(90deg)}
+.qa[open] .qa-x{background:var(--tint-12)}
+.qa[open] .qa-x::after{transform:translate(-50%,-50%)}
+.qa p{max-width:var(--measure);padding-bottom:24px;color:var(--muted-strong);line-height:1.75}
+@media (hover:hover) and (pointer:fine){.qa summary:hover .qa-x{background:var(--border-2)}}
+@media (max-width:1023px){.faq-grid{grid-template-columns:1fr}.faq-head{position:static}}
+
+/* הרשימה שלי: כפתור צף, הודעה קצרה, וחלון */
+.ml-btn{position:fixed;z-index:71;bottom:16px;inset-inline-start:16px;display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 20px;border:0;border-radius:999px;cursor:pointer;
+  background:#fff;color:var(--ink);font:500 calc(15px * var(--a11y-scale))/1.2 var(--font-body);box-shadow:inset 0 0 0 1.5px var(--btn-solid),0 10px 28px rgb(var(--shade) / .2)}
+.ml-btn[hidden]{display:none}
+.ml-btn .ic{width:20px;height:20px;color:var(--btn-solid)}
+.ml-btn:focus-visible{outline:2px solid var(--accent-text);outline-offset:3px}
+html.md-open .ml-btn{opacity:0;visibility:hidden}
+.ml-toast{position:fixed;z-index:72;bottom:84px;inset-inline-start:16px;max-width:min(360px, calc(100vw - 32px));padding:12px 16px;border-radius:var(--r-control);background:var(--ink);color:#fff;
+  font-size:calc(14px * var(--a11y-scale));line-height:1.5;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .2s var(--ease),transform .2s var(--ease)}
+.ml-toast.on{opacity:1;transform:none}
+.ml-toast:empty{display:none}
+.ml{width:min(480px, calc(100vw - 32px));max-height:calc(100svh - 32px);padding:0;border:0;border-radius:var(--r-card);color:var(--ink);box-shadow:0 30px 80px rgba(17,24,39,.3)}
+.ml::backdrop{background:rgba(17,24,39,.45)}
+.ml-in{position:relative;padding:clamp(24px, 2.2vw, 40px);display:grid;gap:14px}
+.ml-top h2{font-family:var(--font-head);font-weight:400;font-size:clamp(28px, 1.4vw + .6rem, 40px);line-height:1.2;padding-inline-end:48px}
+.ml-sub{color:var(--muted-strong);font-size:calc(15px * var(--a11y-scale));line-height:1.65}
+.ml-items{list-style:none;padding:0;display:grid}
+.ml-items li{display:grid;grid-template-columns:56px 1fr auto;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--border)}
+.ml-th{width:56px;height:70px;border-radius:var(--r-inner);overflow:hidden;background:repeating-linear-gradient(135deg,var(--surface-muted) 0 8px,#eef0f2 8px 16px)}
+.ml-th img{width:100%;height:100%;object-fit:cover}
+.ml-items b{display:block;font-weight:500;line-height:1.4}
+.ml-items small{font-size:calc(14px * var(--a11y-scale));color:var(--muted-strong)}
+.ml-rm{min-height:44px;padding:0 12px;border:0;border-radius:var(--r-control);background:var(--surface-muted);font:inherit;font-size:calc(14px * var(--a11y-scale));font-weight:500;color:var(--ink);cursor:pointer}
+.ml-rm:focus-visible{outline:2px solid var(--accent-text);outline-offset:2px}
+.ml-empty{padding:16px;border-radius:var(--r-control);background:var(--surface-muted);color:var(--muted-strong)}
+.ml-empty[hidden],.ml-send[hidden]{display:none}
+.ml-send{min-height:52px;font-size:calc(16px * var(--a11y-scale))}
+@media (hover:hover) and (pointer:fine){.ml-rm:hover{background:var(--border-2)}}
+@media (max-width:1023px){
+  /* מעל פס הוואטסאפ התחתון */
+  .ml-btn{bottom:calc(76px + env(safe-area-inset-bottom));inset-inline-start:12px;min-height:48px}
+  .ml-toast{bottom:calc(136px + env(safe-area-inset-bottom));inset-inline:12px;max-width:none}
+}
+@media (prefers-reduced-motion:reduce){.heart,.heart .ic,.ml-toast,.qa-x,.qa-x::after{transition-duration:.01ms!important}}
 
 /* מצב ניגודיות של המערכת: הטבעת של הפוקוס נשארת גלויה */
 @media (forced-colors:active){:focus-visible{outline:2px solid CanvasText!important;outline-offset:2px}}

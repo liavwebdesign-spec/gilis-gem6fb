@@ -253,6 +253,80 @@ document.querySelectorAll("[data-year]").forEach(function(e){e.textContent=new D
   list.addEventListener("scroll",upd,{passive:true}); addEventListener("resize",upd); upd();
 })();
 
+/* ---------- עמוד יעד: לשוניות המלונות לפי סוג החופשה ---------- */
+(function(){
+  var bar=document.querySelector(".htl-tabs"), list=document.getElementById("htl-list"); if(!bar||!list)return;
+  var tabs=[].slice.call(bar.querySelectorAll('[role="tab"]')), cards=[].slice.call(list.children);
+  function pick(t,focus){
+    tabs.forEach(function(x){var on=x===t; x.setAttribute("aria-selected",on); x.tabIndex=on?0:-1;});
+    var type=t.dataset.type;
+    cards.forEach(function(c){c.hidden=type!=="all"&&(" "+c.dataset.types+" ").indexOf(" "+type+" ")<0;});
+    if(focus)t.focus();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener("click",function(){pick(t);});
+    t.addEventListener("keydown",function(e){
+      // בעברית החץ השמאלי מתקדם
+      var k=e.key, n=k==="ArrowLeft"?i+1:k==="ArrowRight"?i-1:k==="Home"?0:k==="End"?tabs.length-1:null;
+      if(n===null)return; e.preventDefault(); pick(tabs[(n+tabs.length)%tabs.length],true);
+    });
+  });
+  bar.hidden=false;
+})();
+
+/* ---------- הרשימה שלי: לב על מלון או חוויה, והכל נשלח בהודעת וואטסאפ אחת ---------- */
+(function(){
+  var hearts=[].slice.call(document.querySelectorAll(".heart")), btn=document.querySelector(".ml-btn"), dlg=document.getElementById("ml");
+  if(!btn||!dlg||!dlg.showModal)return;
+  var KEY="gilis-list", ul=dlg.querySelector(".ml-items"), empty=dlg.querySelector(".ml-empty"), send=dlg.querySelector(".ml-send"),
+      count=btn.querySelector(".ml-count"), toast=document.querySelector(".ml-toast"), items=[], tt=0;
+  try{items=JSON.parse(localStorage.getItem(KEY)||"[]");}catch(e){items=[];}
+  if(!Array.isArray(items))items=[];
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(items));}catch(e){}}
+  function idx(n,d){for(var i=0;i<items.length;i++)if(items[i].n===n&&items[i].d===d)return i; return -1;}
+  function say(t){toast.textContent=t; toast.classList.add("on"); clearTimeout(tt); tt=setTimeout(function(){toast.classList.remove("on");},4200);}
+  function render(){
+    hearts.forEach(function(h){
+      var on=idx(h.dataset.name,h.dataset.dest)>-1;
+      h.setAttribute("aria-pressed",on);
+      h.setAttribute("aria-label",(on?"הסרה מהרשימה שלי: ":"הוספה לרשימה שלי: ")+h.dataset.name);
+    });
+    count.textContent=items.length; btn.hidden=!items.length;
+    ul.textContent="";
+    items.forEach(function(it,i){
+      var li=document.createElement("li"), th=document.createElement("span"), tx=document.createElement("span"), b=document.createElement("b"), s=document.createElement("small"), x=document.createElement("button");
+      th.className="ml-th";
+      if(it.img){var im=document.createElement("img"); im.src=it.img; im.alt=""; im.width=56; im.height=70; im.loading="lazy"; th.appendChild(im);}
+      b.textContent=it.n; s.textContent=it.d; tx.append(b,s);
+      x.type="button"; x.className="ml-rm"; x.textContent="הסרה"; x.setAttribute("aria-label","הסרה: "+it.n);
+      x.addEventListener("click",function(){
+        items.splice(i,1); save(); render();
+        var next=ul.querySelectorAll(".ml-rm")[Math.min(i,items.length-1)]; (next||dlg.querySelector(".ml-x")).focus();
+      });
+      li.append(th,tx,x); ul.appendChild(li);
+    });
+    empty.hidden=!!items.length; send.hidden=!items.length;
+    var msg="היי, הכנתי רשימה באתר:\n"+items.map(function(it){return "• "+it.n+" ("+it.d+")";}).join("\n")+"\nאשמח שתבנו לי הצעה";
+    send.href="https://wa.me/972544050071?text="+encodeURIComponent(msg);
+  }
+  hearts.forEach(function(h){
+    h.addEventListener("click",function(){
+      var i=idx(h.dataset.name,h.dataset.dest), first=!items.length;
+      if(i>-1)items.splice(i,1); else items.push({n:h.dataset.name,d:h.dataset.dest,img:h.dataset.img||""});
+      save(); render();
+      if(i<0)say(first?"נשמר ברשימה שלכם. כשתסיימו לבחור, שולחים לנו הכל בהודעה אחת.":"נוסף לרשימה שלכם.");
+      else say("הוסר מהרשימה.");
+    });
+  });
+  btn.addEventListener("click",function(){dlg.showModal();});
+  dlg.querySelector(".ml-x").addEventListener("click",function(){dlg.close();});
+  dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close();});
+  dlg.addEventListener("close",function(){if(!btn.hidden)btn.focus();});
+  // רשימה ששונתה בלשונית אחרת
+  addEventListener("storage",function(e){if(e.key!==KEY)return; try{items=JSON.parse(e.newValue||"[]")||[];}catch(x){items=[];} render();});
+  render();
+})();
+
 /* ---------- הטופס הקצר (משני לוואטסאפ) ---------- */
 (function(){
   var dlg=document.getElementById("lead"); if(!dlg||!dlg.showModal)return;
@@ -309,6 +383,26 @@ function build(){
     mm.add(C,function(){
       // בלי תנועה השמש יושבת בסוף המסלול: עכשיו חורף
       var put=function(){gsap.set(".sun",{motionPath:Object.assign({start:1,end:1},path)});};
+      put(); addEventListener("resize",put);
+      return function(){removeEventListener("resize",put);};
+    });
+  }
+
+  // עמוד סיישל · שתי סצנות גלילה: הצילום בפתיחה מתרחק לאט כשיורדים, והסירה שעוברת בין האיים לאורך כל הסקשן
+  if(document.querySelector(".isls")){
+    mm.add(M,function(){
+      gsap.fromTo(".hero-media img",{scale:1.12,yPercent:0},{scale:1,yPercent:8,ease:"none",scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:.5}});
+    });
+  }
+
+  // עמוד סיישל · אותו מהלך (g25): סירה עוברת בין שלושת האיים בגלילה. בטלפון המסלול מוסתר והמעברים כתובים בין הכרטיסים
+  if(document.querySelector(".boat")){
+    var route={path:"#route-path",align:"#route-path",alignOrigin:[.5,.5],autoRotate:false};
+    mm.add("(min-width:768px) and "+(still?"not all":MOTION),function(){
+      gsap.to(".boat",{motionPath:route,ease:"none",scrollTrigger:{trigger:"#islands",start:"top 60%",end:"bottom 70%",scrub:.6,invalidateOnRefresh:true}});
+    });
+    mm.add("(min-width:768px) and "+(still?"all":CALM),function(){
+      var put=function(){gsap.set(".boat",{motionPath:Object.assign({start:.5,end:.5},route)});};
       put(); addEventListener("resize",put);
       return function(){removeEventListener("resize",put);};
     });
