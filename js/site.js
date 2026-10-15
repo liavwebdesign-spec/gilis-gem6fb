@@ -408,6 +408,88 @@ function build(){
     });
   }
 
+  // עמוד סיישל · האווירה בגלילה: עננים, מטוס, שמש, שחפים, עלה דקל, סירה, צב ושקיעה.
+  // כל שכבה רק בשטח ריק. בהפחתת תנועה הן נשארות סטטיות במקום הסופי, והמטוס מוסתר
+  (function(){
+    var atmo=document.querySelector(".hero-atmo"); if(!atmo)return;
+    var fly={path:"#fly-path",align:"#fly-path",alignOrigin:[.5,.5],autoRotate:90};
+    var trail=atmo.querySelector(".fly-trail");
+    mm.add(M,function(){
+      // לפני הגלילה המטוס כבר בנקודת ההתחלה, מתחת לעננים (אחרת הוא נשאר בפינה עד שזזים)
+      gsap.set(".plane-wrap",{motionPath:Object.assign({start:0,end:0},fly),scale:1.1});
+      var tl=gsap.timeline({defaults:{ease:"none"},scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:.8,invalidateOnRefresh:true}});
+      // המטוס עולה מהעננים ומתרחק: קטן ככל שהוא עולה
+      tl.fromTo(".plane-wrap",{scale:1.1},{motionPath:Object.assign({start:0,end:1},fly),scale:.7,duration:1},0)
+        .fromTo(trail,{attr:{"stroke-dashoffset":1}},{attr:{"stroke-dashoffset":0},duration:1},0)
+        .to(trail,{opacity:0,duration:.3},.7)
+        // העננים נפרדים לצדדים ועולים מהר מהעמוד, כאילו יורדים דרכם
+        .to(".cl-l",{xPercent:-22,yPercent:-58,duration:1},0)
+        .to(".cl-r",{xPercent:24,yPercent:-70,duration:1},0)
+        .to(".cl-m",{yPercent:-120,scale:1.25,duration:1},0)
+        .to(".cl-back",{xPercent:-30,duration:1},0)
+        .to(".glow",{rotate:18,scale:1.2,opacity:.6,duration:1},0);
+      return function(){trail.setAttribute("stroke-dashoffset","1"); gsap.set([trail,".plane-wrap",".plane",".cl",".glow"],{clearProps:"all"});};
+    });
+    mm.add(C,function(){
+      var plane=atmo.querySelector(".plane-wrap"); plane.style.display="none"; gsap.set(trail,{opacity:0});
+      return function(){plane.style.display=""; gsap.set(trail,{clearProps:"opacity"});};
+    });
+    // האור והמטוס זזים מעט אחרי העכבר, כמו עומק
+    if(matchMedia("(hover:hover) and (pointer:fine)").matches&&!atmo.dataset.mv){
+      atmo.dataset.mv=1;
+      var hero=document.querySelector(".hero"), glow=atmo.querySelector(".glow"), pl=atmo.querySelector(".plane");
+      hero.addEventListener("pointermove",function(e){
+        if(!matchMedia(MOTION).matches||doc.classList.contains("a11y-still"))return;
+        var r=hero.getBoundingClientRect(), dx=(e.clientX-r.left)/r.width-.5, dy=(e.clientY-r.top)/r.height-.5;
+        glow.style.setProperty("--mx",(dx*60)+"px"); glow.style.setProperty("--my",(dy*40)+"px");
+        pl.style.setProperty("--px",(dx*-24)+"px"); pl.style.setProperty("--py",(dy*-16)+"px");
+      },{passive:true});
+    }
+  })();
+
+  (function(){
+    if(!document.querySelector(".gulls"))return;
+    mm.add("(min-width:1024px) and "+(still?"not all":MOTION),function(){
+      // שחפים חוצים מימין לשמאל, כל אחד במהירות אחרת, עם גלי גובה קטנים
+      gsap.utils.toArray(".gull").forEach(function(g,i){
+        var dist=[-1,-.7,-.45][i];
+        gsap.fromTo(g,{x:function(){return g.parentNode.offsetWidth*.18;},y:0},{x:function(){return g.parentNode.offsetWidth*dist*.5;},y:[-18,10,-26][i],ease:"none",
+          scrollTrigger:{trigger:"#islands",start:"top bottom",end:"top 10%",scrub:.6+i*.3,invalidateOnRefresh:true}});
+      });
+      // עלה הדקל מתנדנד, והצל שלו זז מעט יותר, כמו אור שעובר
+      gsap.fromTo(".frond",{rotate:-7},{rotate:5,ease:"none",scrollTrigger:{trigger:"#hotels",start:"top bottom",end:"bottom top",scrub:.8}});
+      gsap.fromTo(".frond-shade",{x:-10,y:-6},{x:18,y:14,ease:"none",scrollTrigger:{trigger:"#hotels",start:"top bottom",end:"bottom top",scrub:1}});
+      // הסירה שטה לאורך הגלים
+      gsap.fromTo(".sail-boat",{rotate:-4},{motionPath:{path:"#sail-path",align:"#sail-path",alignOrigin:[.5,.82],start:.05,end:.85},rotate:4,ease:"none",
+        scrollTrigger:{trigger:"#how",start:"top 85%",end:"bottom 40%",scrub:.8,invalidateOnRefresh:true}});
+      // הצב שוחה שמאלה בקשת רכה
+      gsap.fromTo(".turtle",{x:0,y:0,rotate:4},{keyframes:{x:[0,-90,-200,-300],y:[0,-14,8,-6]},rotate:-6,ease:"none",
+        scrollTrigger:{trigger:"#experiences",start:"top 85%",end:"top 5%",scrub:1}});
+      return function(){gsap.set([".gull",".frond",".frond-shade",".sail-boat",".turtle"],{clearProps:"all"});};
+    });
+    mm.add("(min-width:1024px) and "+(still?"all":CALM),function(){
+      var put=function(){gsap.set(".sail-boat",{motionPath:{path:"#sail-path",align:"#sail-path",alignOrigin:[.5,.82],start:.45,end:.45}});};
+      put(); addEventListener("resize",put);
+      return function(){removeEventListener("resize",put);};
+    });
+    // הפרונד בטאבלט: נדנוד קטן בלבד
+    mm.add("(min-width:768px) and (max-width:1023px) and "+(still?"not all":MOTION),function(){
+      gsap.fromTo(".frond",{rotate:-5},{rotate:4,ease:"none",scrollTrigger:{trigger:"#hotels",start:"top bottom",end:"bottom top",scrub:.8}});
+    });
+  })();
+
+  // סיום: השמש שוקעת אל קו המים והדקל נע ברוח, לאורך הכניסה של הפס
+  (function(){
+    if(!document.querySelector(".cta-atmo"))return;
+    mm.add(M,function(){
+      var tl=gsap.timeline({defaults:{ease:"none"},scrollTrigger:{trigger:".cta",start:"top bottom",end:"bottom bottom",scrub:.8}});
+      tl.fromTo(".cta-sun",{yPercent:-80},{yPercent:40,duration:1},0)
+        .fromTo(".cta-palm",{rotate:-3},{rotate:2,duration:1},0)
+        .fromTo(".cta-sea .sh",{scaleX:.4,transformOrigin:"50% 50%"},{scaleX:1,duration:1},.3);
+      return function(){gsap.set([".cta-sun",".cta-palm",".cta-sea .sh"],{clearProps:"all"});};
+    });
+  })();
+
   // MV:g141 · שיחת וואטסאפ שמתנהלת בגלילה
   (function(){
     var msgs=gsap.utils.toArray(".ch-m"), typ=document.querySelector(".ch-typ");
@@ -488,6 +570,70 @@ document.addEventListener("a11y:still",function(){if(mm)mm.revert(); build(); Sc
     var n=+m.dataset.stepStart; if(n<2)return;
     ScrollTrigger.create({trigger:m,start:function(){return "top-="+(gsap.getProperty(m,"y")||0)+" 75%";},onEnter:function(){step(n);},onLeaveBack:function(){step(n-1);}});
   });
+})();
+
+// מיקרו אינטראקציות: רק עם עכבר אמיתי ובלי הפחתת תנועה. בודקים בכל תנועה, כדי שמתג "עצירת תנועה" בסרגל הנגישות יעבוד מיד
+(function(){
+  var fine=matchMedia("(hover:hover) and (pointer:fine)"), calm=matchMedia("(prefers-reduced-motion: reduce)");
+  function ok(){return fine.matches&&!calm.matches&&!doc.classList.contains("a11y-still");}
+
+  // הטיה ואור על כרטיסי התמונה
+  document.querySelectorAll(".hcard-media,.xp-media,.shot-frame.has-img").forEach(function(el){
+    el.classList.add("tilt");
+    el.addEventListener("pointermove",function(e){
+      if(!ok())return;
+      var r=el.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+      el.classList.add("is-on");
+      el.style.setProperty("--ry",((x-.5)*7).toFixed(2)+"deg"); el.style.setProperty("--rx",((.5-y)*7).toFixed(2)+"deg");
+      el.style.setProperty("--gx",(x*100).toFixed(1)+"%"); el.style.setProperty("--gy",(y*100).toFixed(1)+"%");
+    },{passive:true});
+    el.addEventListener("pointerleave",function(){el.classList.remove("is-on"); el.style.removeProperty("--rx"); el.style.removeProperty("--ry");});
+  });
+
+  // כפתורים מגנטיים: הפעולות הראשיות נמשכות מעט אל העכבר
+  document.querySelectorAll(".btn-hero,.isl-foot .btn,.htl-more + .btn").forEach(function(b){
+    b.classList.add("magnet");
+    b.addEventListener("pointermove",function(e){
+      if(!ok())return;
+      var r=b.getBoundingClientRect(), dx=e.clientX-(r.left+r.width/2), dy=e.clientY-(r.top+r.height/2);
+      b.classList.add("is-on"); b.style.transform="translate("+(dx*.18).toFixed(1)+"px,"+(dy*.3).toFixed(1)+"px)";
+    },{passive:true});
+    b.addEventListener("pointerleave",function(){b.classList.remove("is-on"); b.style.transform="";});
+  });
+
+  // לב: קפיצה כשהוא נדלק (גם במגע)
+  document.addEventListener("click",function(e){
+    var h=e.target.closest&&e.target.closest(".heart"); if(!h)return;
+    requestAnimationFrame(function(){
+      h.classList.remove("pop");
+      if(h.getAttribute("aria-pressed")==="true"&&!calm.matches){void h.offsetWidth; h.classList.add("pop");}
+    });
+  });
+  document.addEventListener("animationend",function(e){if(e.animationName==="ring")e.target.classList.remove("pop");});
+
+  // המעבר בין האיים: הנקודה של האי מסומנת כשעוברים על הכרטיס שלו
+  var dots=document.querySelectorAll(".route-dot");
+  document.querySelectorAll(".isl").forEach(function(c,i){
+    if(!dots[i])return;
+    c.addEventListener("pointerenter",function(){dots[i].classList.add("is-on");});
+    c.addEventListener("pointerleave",function(){dots[i].classList.remove("is-on");});
+  });
+
+  // לשוניות המלונות: רקע אחד שמחליק ללשונית הנבחרת
+  var tabs=document.querySelector(".htl-tabs");
+  if(tabs){
+    var ind=document.createElement("span"); ind.className="htl-ind"; ind.setAttribute("aria-hidden","true"); tabs.prepend(ind); tabs.classList.add("has-ind");
+    var placed, place=function(){
+      var t=tabs.querySelector('.htl-tab[aria-selected="true"]'); if(!t||!t.offsetWidth)return;
+      var to={x:t.offsetLeft,y:t.offsetTop,width:t.offsetWidth,height:t.offsetHeight};
+      // מחליק רק אחרי ההצבה הראשונה, ורק כשמותר לזוז
+      if(!placed||!window.gsap||calm.matches||doc.classList.contains("a11y-still"))gsap.set(ind,to); else gsap.to(ind,Object.assign({duration:.45,ease:"power3.out"},to));
+      placed=true;
+    };
+    place(); addEventListener("resize",place);
+    new MutationObserver(place).observe(tabs,{attributes:true,subtree:true,attributeFilter:["aria-selected"]});
+    if(document.fonts)document.fonts.ready.then(place);
+  }
 })();
 
 });
