@@ -1,9 +1,12 @@
-/* Gili's Tours v2: קלאסי, נקי, בוגר. אפורים ניטרליים עדינים, נייבי וזהב מהדקל שבלוגו (ליאב 18.10: בלי קרם ובז'). Google Sans בלבד. */
+/* Gili's Tours v2: קלאסי, נקי, בוגר. אפורים ניטרליים עדינים, נייבי וזהב מהדקל שבלוגו (ליאב 18.10: בלי קרם ובז'). Google Sans; גרסת השוואה עם Open Sans ב-seychelles-open-sans.html (ליאב 18.10), דרך המשתנה --ff. */
 @font-face{font-family:'GSans';src:url(../fonts/google-sans-400.woff2) format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:'GSans';src:url(../fonts/google-sans-500.woff2) format('woff2');font-weight:500;font-display:swap}
 @font-face{font-family:'GSans';src:url(../fonts/google-sans-700.woff2) format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'OSans';src:url(../fonts/open-sans-400.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'OSans';src:url(../fonts/open-sans-500.woff2) format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'OSans';src:url(../fonts/open-sans-700.woff2) format('woff2');font-weight:700;font-display:swap}
 
-:root{
+:root{--ff:'GSans',system-ui,sans-serif;
   --mist:#f3f4f6;--mist-2:#e8eaed;--paper:#fff;
   --navy:#14304d;--navy-2:#0e2238;--ink:#1d2b3a;--text:#4a5a6a;--muted:#7a8794;
   --gold:#b08a55;--gold-2:#9a7543;--gold-lt:#d6b27a;--soft:#d6dade;--teal:#4d9c98;
@@ -15,10 +18,11 @@
   --sec:clamp(72px,9vw,128px);
   --ease:cubic-bezier(.2,.6,.2,1);
 }
+.font-os{--ff:'OSans',system-ui,sans-serif}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scrollbar-gutter:stable}
 html.lock{overflow:hidden}
-body{margin:0;background:var(--mist);color:var(--text);font:400 17px/1.75 'GSans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body{margin:0;background:var(--mist);color:var(--text);font:400 17px/1.75 var(--ff);-webkit-font-smoothing:antialiased;overflow-x:clip}
 img,video,svg{display:block;max-width:100%}
 img{height:auto}
 a{color:inherit;text-decoration:none}
@@ -46,7 +50,7 @@ h3{font-size:20px;line-height:1.35}
 .sec-cta{display:flex;justify-content:center;margin-top:clamp(40px,4vw,56px)}
 
 /* כפתורים */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 28px;border-radius:999px;font:500 16px/1 'GSans',sans-serif;border:1px solid transparent;cursor:pointer;transition:background .25s var(--ease),color .25s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 28px;border-radius:999px;font:500 16px/1 var(--ff);border:1px solid transparent;cursor:pointer;transition:background .25s var(--ease),color .25s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s}
 .btn .ic{transition:transform .3s var(--ease)}
 .btn:hover .ic{transform:translateX(-4px)}
 .btn-gold{background:var(--gold);color:#fff}
@@ -204,7 +208,7 @@ h3{font-size:20px;line-height:1.35}
 .route-back{fill:none;stroke:var(--gold);stroke-width:1.5;stroke-dasharray:2 6;opacity:0;transition:opacity .5s}
 .route.back-on .route-back{opacity:.7}
 .stop circle{fill:var(--paper);stroke:var(--line-2);stroke-width:2;transition:fill .4s,stroke .4s,r .4s}
-.stop text{font:500 15px 'GSans',sans-serif;fill:var(--muted);transition:fill .4s}
+.stop text{font:500 15px var(--ff);fill:var(--muted);transition:fill .4s}
 .stop.on circle{fill:var(--gold);stroke:var(--gold)}
 .stop.on text{fill:var(--navy)}
 .plane-mark{fill:var(--navy)}
@@ -331,7 +335,7 @@ h3{font-size:20px;line-height:1.35}
 .form h3{font-size:23px;margin-bottom:24px}
 .fld{display:block;margin-bottom:16px}
 .fld span{display:block;font-size:14px;font-weight:500;color:var(--navy);margin-bottom:6px}
-.fld input{width:100%;height:50px;border:1px solid var(--line-2);border-radius:10px;padding:0 14px;font:400 16px 'GSans',sans-serif;color:var(--ink);background:var(--paper);transition:border-color .25s,box-shadow .25s}
+.fld input{width:100%;height:50px;border:1px solid var(--line-2);border-radius:10px;padding:0 14px;font:400 16px var(--ff);color:var(--ink);background:var(--paper);transition:border-color .25s,box-shadow .25s}
 .fld input[dir="ltr"]{text-align:right/* qa-allow: physical (טלפון בשדה LTR מיושר לצד העברי) */}
 .fld input::placeholder{color:#a9b2ba}
 .fld input:focus{outline:0;border-color:var(--gold);box-shadow:0 0 0 3px rgba(176,138,85,.18)}
