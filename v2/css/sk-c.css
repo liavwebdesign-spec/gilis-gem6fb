@@ -106,7 +106,7 @@
   .subnav{top:64px}
   .subnav a{padding:14px 0;font-size:14.5px}
   .sk-c section[id]{scroll-margin-top:118px}
-  .sk-c .hero{margin-top:64px;min-height:calc(100svh - 64px - 120px)}
+  .sk-c .hero{margin-top:64px;min-height:calc(100svh - 64px)}
   .sk-c .hero-in{/* qa-allow: sec (ההירו בטלפון ממורכז) */padding-block:48px}
   .sk-c .vid-toggle{top:16px;bottom:auto}
   .sk-c .trust{margin-inline:0;padding-inline:0}
@@ -116,3 +116,7 @@
   .sk-c .facts-g .ic-l{width:52px;height:52px;padding:12px}
   .sk-c .why-g li:not(.why-sum){padding:28px 24px}
 }
+
+/* חוויות: הגוף ממורכז, ולכן גם הראש (ציר אחד לסקשן) */
+.sk-c .exp .sec-h{text-align:center;margin-inline:auto}
+.sk-c .exp .sec-h h2::after{margin-inline:auto}
