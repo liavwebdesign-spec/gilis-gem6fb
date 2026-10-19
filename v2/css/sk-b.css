@@ -67,7 +67,7 @@
 .sk-b .isl-list{gap:24px}
 .sk-b .isl,.sk-b .isl:nth-child(even){position:relative;display:flex;align-items:center;justify-content:center;min-height:min(80vh,720px);border-radius:var(--r-lg);overflow:hidden;isolation:isolate;color:#fff}
 .sk-b .isl-img,.sk-b .isl-img.rv-img,.sk-b .isl-img.rv-img.in{position:absolute;inset:0;aspect-ratio:auto;border-radius:0;clip-path:none;z-index:-1}
-.sk-b .isl-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,14,20,.25),rgba(8,14,20,.5))}
+.sk-b .isl-img::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 45% at 50% 50%,rgba(8,14,20,.3),transparent),linear-gradient(180deg,rgba(8,14,20,.32),rgba(8,14,20,.55))}
 .sk-b .isl-txt{max-width:640px;padding:48px 24px;text-align:center}
 .sk-b .isl-txt p{max-width:none;color:rgba(255,255,255,.94);font-size:18px}
 .sk-b .isl-n{color:#fff;letter-spacing:.24em}
