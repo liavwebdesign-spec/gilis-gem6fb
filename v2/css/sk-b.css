@@ -1,0 +1,136 @@
+/* סקיצה ב (19.10.2026): בכיוון של ליבנה. התמונה מובילה, טקסט לבן וממורכז על צילום מלא, הרבה לבן, פינות עדינות.
+   נטען אחרי site.css ומשנה רק את מה שצריך; אותו תוכן ואותו סקריפט. */
+.sk-b{
+  --mist:#f4f5f6;--mist-2:#e9ebed;
+  --navy:#1c2630;--navy-2:#141b22;--ink:#1c2630;--text:#4b5560;--muted:#7c858e;
+  --gold:#2f7470;--gold-2:#245c59;--gold-lt:#a9d6d2;--soft:#d7dbdf;
+  --r:6px;--r-lg:8px;
+}
+.sk-b body{background:var(--paper)}
+.sk-b h2{font-weight:500;font-size:clamp(32px,3.8vw,50px);line-height:1.16}
+.sk-b .eyebrow{letter-spacing:.18em}
+.sk-b .sec-h-start{margin-inline:auto;text-align:center}
+
+/* הירו: כותרת גדולה באמצע המסך, כמו בליבנה */
+.sk-b .hero{align-items:center}
+.sk-b .hero-shade{background:linear-gradient(180deg,rgba(8,14,20,.42) 0%,rgba(8,14,20,.22) 38%,rgba(8,14,20,.3) 62%,rgba(8,14,20,.55) 100%)}
+.sk-b .hero-in{/* qa-allow: sec (ההירו ממורכז במסך) */padding-block:112px 96px}
+.sk-b .hero-en{font-size:15px;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.92);margin-bottom:16px}
+.sk-b .hero h1{font-size:clamp(56px,8vw,112px)}
+.sk-b .hero .btn-gold{background:#fff;color:var(--ink)}
+.sk-b .hero .btn-gold:hover{background:var(--mist);box-shadow:none}
+.sk-b .hero-wave{display:none}
+.sk-b .vid-toggle{bottom:32px}
+
+/* פס אמון: שורה שקטה על לבן, לא כרטיס */
+.sk-b .trust{margin-top:0;max-width:1100px;border-radius:0;box-shadow:none;background:transparent;padding-block:16px}
+.sk-b .trust-i .ic-l{stroke:var(--gold)}
+
+/* עובדות: פריטים ממורכזים, בלי רשת קווים */
+.sk-b .facts{background:var(--mist)}
+.sk-b .facts-g{display:flex;flex-wrap:wrap;justify-content:center;gap:48px 0;border:0}
+.sk-b .facts-g li{width:25%;border:0;align-items:center;text-align:center;padding:0 24px;gap:16px}
+.sk-b .facts-g li:hover{background:transparent}
+.sk-b .facts-g li.facts-pic{display:none}
+.sk-b .facts-g .ic-l{width:36px;height:36px}
+
+/* למה אנחנו: ממורכז ואוורירי */
+.sk-b .why-g li:not(.why-sum){border-top:0;padding-top:0;text-align:center}
+.sk-b .why-top{flex-direction:column;align-items:center;gap:16px}
+.sk-b .num{font-size:15px;letter-spacing:.2em;font-weight:500}
+.sk-b .why-sum{background:var(--mist);align-items:center;text-align:center;justify-content:center}
+.sk-b .why-sum .btn{align-self:center}
+
+/* הכירו: צילום מלא לרוחב עם הטקסט עליו */
+.sk-b .meet{display:block;position:relative;overflow:hidden;padding:0;min-height:max(620px,88vh);background:var(--navy);color:#fff;isolation:isolate}
+.sk-b .meet-img,.sk-b .meet-img.rv-img,.sk-b .meet-img.rv-img.in{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;border-radius:0;clip-path:none;z-index:-1}
+.sk-b .meet-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,14,20,.5),rgba(8,14,20,.4) 50%,rgba(8,14,20,.6))}
+.sk-b .meet-txt{max-width:820px;margin-inline:auto;padding:clamp(112px,14vw,160px) var(--pad);text-align:center}
+.sk-b .meet h2{color:#fff}
+.sk-b .meet .eyebrow{color:var(--gold-lt)}
+.sk-b .meet-card p{color:rgba(255,255,255,.92);font-size:18px}
+.sk-b .meet-stats{justify-content:center;gap:64px}
+.sk-b .meet-stats dd{color:#fff;font-size:44px}
+.sk-b .meet-stats dt{color:rgba(255,255,255,.8)}
+
+/* מלונות: בלי כרטיס, תמונה גבוהה וטקסט מתחת */
+.sk-b .htl{background:transparent;box-shadow:none;border-radius:0}
+.sk-b .htl:hover{box-shadow:none;transform:none}
+.sk-b .htl-img{aspect-ratio:4/5;border-radius:var(--r)}
+.sk-b .htl-b{padding:24px 8px 8px}
+.sk-b .tags li{background:transparent;color:var(--gold);padding:0}
+.sk-b .tags li+li::before{content:"·";margin-inline-end:8px;color:var(--muted)}
+.sk-b .tags{gap:8px}
+
+/* האיים: כל אי הוא צילום מלא עם הטקסט באמצע, כמו כרטיסי היעדים של ליבנה */
+.sk-b .islands{background:var(--paper)}
+.sk-b .isl-list{gap:24px}
+.sk-b .isl,.sk-b .isl:nth-child(even){position:relative;display:flex;align-items:center;justify-content:center;min-height:min(80vh,720px);border-radius:var(--r-lg);overflow:hidden;isolation:isolate;color:#fff}
+.sk-b .isl-img,.sk-b .isl-img.rv-img,.sk-b .isl-img.rv-img.in{position:absolute;inset:0;aspect-ratio:auto;border-radius:0;clip-path:none;z-index:-1}
+.sk-b .isl-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,14,20,.25),rgba(8,14,20,.5))}
+.sk-b .isl-txt{max-width:640px;padding:48px 24px;text-align:center}
+.sk-b .isl-txt p{max-width:none;color:rgba(255,255,255,.94);font-size:18px}
+.sk-b .isl-n{color:#fff;letter-spacing:.24em}
+.sk-b .isl-txt h3{color:#fff;font-size:clamp(32px,3.6vw,48px);font-weight:500}
+.sk-b .isl-fit{border-inline-start:0;padding-inline-start:0;color:#fff;font-weight:500}
+
+/* מסלול */
+.sk-b .route{background:var(--mist)}
+.sk-b .route-band{background:var(--navy)}
+.sk-b .route-band h2{font-weight:500}
+.sk-b .route-meta i{background:var(--gold-lt)}
+.sk-b .day{box-shadow:none}
+.sk-b .day.on{box-shadow:var(--sh)}
+.sk-b .isl-shape{fill:#e6eeec;stroke:#b9cdc9}
+
+/* למי ולחוויות: טקסט ממורכז */
+.sk-b .fit-b{text-align:center}
+.sk-b .fit-c{aspect-ratio:3/4}
+.sk-b .fit-b h3{font-weight:500;font-size:26px}
+.sk-b .exp-img{border-radius:var(--r)}
+
+/* מתי */
+.sk-b .when{background:var(--mist)}
+.sk-b .seasons li{box-shadow:none;text-align:center}
+.sk-b .seasons .ic-l{margin-inline:auto}
+
+/* הטיפ, המלצות, שאלות */
+.sk-b .tip{background:var(--navy)}
+.sk-b .rev{box-shadow:none;background:var(--mist)}
+.sk-b .faq-in{grid-template-columns:1fr;max-width:860px}
+.sk-b .faq-in .sec-h{position:static;margin-bottom:40px}
+.sk-b .faq-cta{display:none}
+
+/* מדריכים */
+.sk-b .guide{background:var(--mist)}
+.sk-b .post-img{border-radius:var(--r)}
+
+/* סיום ופוטר */
+.sk-b .final-bg::after{background:linear-gradient(90deg,rgba(8,14,20,.2) 0%,rgba(8,14,20,.55) 55%,rgba(8,14,20,.75) 100%)}
+.sk-b .final h2{font-weight:500}
+.sk-b .form{border-radius:var(--r-lg)}
+.sk-b .fld input:focus{box-shadow:0 0 0 3px rgba(47,116,112,.18)}
+.sk-b .ill-real{background:rgba(28,38,48,.75)}
+.sk-b .ftr{background:var(--navy-2)}
+
+@media (max-width:960px){
+  .sk-b .facts-g li{width:50%}
+  .sk-b .meet-txt{padding:96px var(--pad)}
+  .sk-b .final-bg::after{background:linear-gradient(180deg,rgba(8,14,20,.35) 0%,rgba(8,14,20,.8) 100%)}
+}
+@media (max-width:700px){
+  .sk-b .hero-in{/* qa-allow: sec (ההירו בטלפון ממורכז) */padding-block:72px 0}
+  .sk-b .hero-en{font-size:13px;letter-spacing:.26em}
+  .sk-b .vid-toggle{bottom:auto}
+  .sk-b .trust{margin-inline:0;padding-block:8px}
+  .sk-b .facts-g{gap:40px 0}
+  .sk-b .facts-g li{width:50%;flex-direction:column;padding:0 8px}
+  .sk-b .facts-g p{font-size:14.5px}
+  .sk-b .meet{min-height:0}
+  .sk-b .meet-card p{font-size:16px}
+  .sk-b .meet-stats{gap:32px}
+  .sk-b .isl,.sk-b .isl:nth-child(even){min-height:540px}
+  .sk-b .isl-txt p{font-size:16px}
+  .sk-b .htl-img{aspect-ratio:4/4.4}
+  .sk-b .fit-c,.sk-b .fit-g .fit-c:last-child{aspect-ratio:4/4.6}
+}

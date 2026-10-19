@@ -1,0 +1,118 @@
+/* סקיצה ג (19.10.2026): בכיוון של Spirit. חברת תיירות גדולה ומסודרת: הדר לבן קבוע, הירו מתחת להדר, פס אמון,
+   תפריט נושאים דביק, כרטיסים מסודרים עם אייקונים בעיגול, כפתורים בכחול-ים של הלוגו. נטען אחרי site.css. */
+.sk-c{
+  --gold:#2a7671;--gold-2:#1f5c58;--gold-lt:#9fd3cf;
+  --navy:#16324a;--ink:#16324a;
+  --r:10px;--r-lg:14px;
+  --tint:#e7f2f1;
+}
+.sk-c body{background:var(--paper)}
+.sk-c section[id]{scroll-margin-top:136px}
+.sk-c .btn-gold:hover{box-shadow:0 10px 24px -10px rgba(31,92,88,.6)}
+
+/* הדר לבן קבוע, לא מתחבא בגלילה (התפריט הדביק יושב מתחתיו) */
+.sk-c .hdr::before{opacity:1}
+.sk-c .hdr-in,.sk-c .hdr.scrolled .hdr-in{height:72px}
+.sk-c .hdr .logo-w{opacity:0}.sk-c .hdr .logo-c{opacity:1}
+.sk-c .nav a,.sk-c .hdr-tel{color:var(--navy)}
+.sk-c .hdr-tel .ic{color:var(--gold)}
+.sk-c .burger span{background:var(--navy)}
+.sk-c .hdr.hide{transform:none}
+
+/* הירו מתחת להדר, כותרת גדולה באמצע */
+.sk-c .hero{margin-top:72px;min-height:min(80vh,760px);align-items:center}
+.sk-c .hero-shade{background:linear-gradient(180deg,rgba(10,26,42,.38) 0%,rgba(10,26,42,.3) 50%,rgba(10,26,42,.5) 100%)}
+.sk-c .hero-in{/* qa-allow: sec (ההירו ממורכז במסך) */padding-block:64px}
+.sk-c .hero h1{font-size:clamp(52px,7vw,96px)}
+.sk-c .hero-wave{display:none}
+.sk-c .vid-toggle{bottom:24px}
+
+/* פס אמון: רצועה רחבה מתחת להירו */
+.sk-c .trust{margin-top:0;max-width:none;border-radius:0;box-shadow:none;background:var(--paper);border-bottom:1px solid var(--line);padding-inline:max(var(--pad),calc((100% - 1100px)/2))}
+.sk-c .trust-i{padding-block:24px}
+.sk-c .trust-i .ic-l{width:52px;height:52px;padding:12px;border-radius:50%;background:var(--tint);stroke-width:1.5}
+
+/* תפריט נושאים דביק */
+.subnav{position:sticky;top:72px;z-index:90;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line),0 8px 20px -16px rgba(20,48,77,.3)}
+.subnav ul{display:flex;justify-content:center;gap:clamp(20px,2.6vw,32px)}
+.subnav a{position:relative;display:block;padding:16px 0;font-size:15px;font-weight:500;color:var(--text);white-space:nowrap;transition:color .25s}
+.subnav a::after{content:"";position:absolute;inset:auto 0 0;height:3px;border-radius:3px 3px 0 0;background:var(--gold);transform:scaleX(0);transition:transform .3s var(--ease)}
+.subnav a:hover{color:var(--navy)}
+.subnav a[aria-current]{color:var(--gold-2)}
+.subnav a[aria-current]::after{transform:scaleX(1)}
+
+/* כותרות מיושרות לימין עם קו קצר, כמו בעמודי היעד של Spirit */
+.sk-c .sec-h{text-align:start;margin-inline:0}
+.sk-c .sec-h h2::after,.sk-c .guide-h h2::after{content:"";display:block;width:56px;height:3px;border-radius:2px;background:var(--gold);margin-top:20px}
+.sk-c .sec-cta{justify-content:flex-start}
+
+/* מידע חשוב: כרטיסים עם אייקון בעיגול */
+.sk-c .facts{background:var(--mist)}
+.sk-c .facts-g{border:0;gap:20px}
+.sk-c .facts-g li{border:0;background:var(--paper);border-radius:var(--r);box-shadow:var(--sh);padding:28px 24px}
+.sk-c .facts-g li:hover{background:var(--paper)}
+.sk-c .facts-g .ic-l{width:60px;height:60px;padding:14px;border-radius:50%;background:var(--tint);stroke-width:1.5}
+.sk-c .facts-g li.facts-pic{padding:0}
+
+/* למה אנחנו: כרטיסים */
+.sk-c .why-g{gap:24px}
+.sk-c .why-g li:not(.why-sum){border:1px solid var(--line);border-radius:var(--r);padding:32px 28px}
+.sk-c .why-top .ic-l{width:56px;height:56px;padding:12px;border-radius:50%;background:var(--tint)}
+.sk-c .num{font-size:30px;font-weight:700}
+.sk-c .why-sum{background:var(--navy)}
+.sk-c .why-sum p{color:#fff}
+.sk-c .why-sum .btn-navy{background:#fff;color:var(--navy)}
+.sk-c .why-sum .btn-navy:hover{background:var(--tint)}
+.sk-c .why-sum .ic-l{stroke:var(--gold-lt)}
+
+/* הכירו */
+.sk-c .meet{background:var(--paper)}
+.sk-c .meet-img{border-radius:0 var(--r-lg) var(--r-lg) 0}
+.sk-c .meet-stats{border-top:1px solid var(--line)}
+.sk-c .meet-stats dd{font-weight:700}
+
+/* מלונות ואיים */
+.sk-c .hotels{background:var(--mist)}
+.sk-c .htl-loc{color:var(--gold)}
+.sk-c .tags li{background:var(--tint);color:var(--gold-2)}
+.sk-c .isl-img{border-radius:var(--r-lg)}
+
+/* מסלול */
+.sk-c .route-band{background:#123b4a}
+.sk-c .isl-shape{fill:#e3f0ee;stroke:#a9cbc6}
+
+/* חוויות, מתי, טיפ */
+.sk-c .exp{background:var(--mist)}
+.sk-c .when{background:var(--paper)}
+.sk-c .seasons li{border:1px solid var(--line);border-top:3px solid var(--c,var(--soft));box-shadow:none}
+.sk-c .seasons .ic-l{width:56px;height:56px;padding:12px;border-radius:50%;background:var(--tint)}
+.sk-c .tip{background:#123b4a}
+.sk-c .reviews{background:var(--mist)}
+.sk-c .rev{border:1px solid var(--line)}
+.sk-c .guide{background:var(--paper)}
+
+/* סיום ופוטר */
+.sk-c .fld input:focus{box-shadow:0 0 0 3px rgba(42,118,113,.18)}
+.sk-c .ftr{background:#0f2a3d}
+
+@media (max-width:960px){
+  .subnav ul{justify-content:flex-start;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1*var(--pad));padding-inline:var(--pad)}
+  .subnav ul::-webkit-scrollbar{display:none}
+  .sk-c .nav-open .hdr{background:var(--paper)}
+  .sk-c .meet-img{border-radius:0}
+}
+@media (max-width:700px){
+  .sk-c .hdr-in,.sk-c .hdr.scrolled .hdr-in{height:64px}
+  .subnav{top:64px}
+  .subnav a{padding:14px 0;font-size:14.5px}
+  .sk-c section[id]{scroll-margin-top:118px}
+  .sk-c .hero{margin-top:64px;min-height:calc(100svh - 64px - 120px)}
+  .sk-c .hero-in{/* qa-allow: sec (ההירו בטלפון ממורכז) */padding-block:48px}
+  .sk-c .vid-toggle{top:16px;bottom:auto}
+  .sk-c .trust{margin-inline:0;padding-inline:0}
+  .sk-c .trust-i .ic-l{width:44px;height:44px;padding:10px}
+  .sk-c .facts-g{gap:12px}
+  .sk-c .facts-g li{padding:20px 18px;gap:16px}
+  .sk-c .facts-g .ic-l{width:52px;height:52px;padding:12px}
+  .sk-c .why-g li:not(.why-sum){padding:28px 24px}
+}
