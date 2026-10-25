@@ -1,0 +1,280 @@
+/* עמוד הבית, לפי המבנה וההדמיה של סימונה (25.10): פתיחה על מים טורקיז חיים, שלושה יעדים בתמונות ענקיות, ואז שאר החלקים בסדר שלה. המים נוצרים בקוד (js/home.js), בלי תמונה. */
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ---------- פתיחה ---------- */
+.h-hero{position:relative;height:100svh;min-height:640px;overflow:hidden;isolation:isolate;color:#fff;
+  /* עד שהמים נטענים, ובלי WebGL: אותו גוון טורקיז עמוק */
+  background:radial-gradient(120% 90% at 78% 18%,#1f8b8f 0%,#126a70 38%,#0b4c54 72%,#083c44 100%)}
+.h-water{position:absolute;inset:0;z-index:-2;width:100%;height:100%;opacity:0;transition:opacity 1.6s var(--ease)}
+.h-water.on{opacity:1}
+/* עומק: כהה מעט מאחורי הטקסט ובשוליים, כדי שהלבן ייקרא היטב על המים */
+.h-shade{position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(64% 56% at 50% 50%,rgba(3,26,32,.42) 0%,rgba(3,26,32,0) 72%),
+             linear-gradient(180deg,rgba(4,26,34,.42) 0%,rgba(4,26,34,0) 24%,rgba(4,26,34,0) 64%,rgba(4,26,34,.46) 100%)}
+
+.h-center{position:absolute;inset:0;display:grid;place-items:center;padding:96px var(--pad) 112px}
+.h-txt{max-width:1040px;text-align:center;will-change:transform,opacity}
+.h-palm{display:block;width:34px;height:34px;margin:0 auto 14px;stroke:var(--gold-lt);stroke-width:1.2}
+.h-brand{font-size:13px;font-weight:500;letter-spacing:.42em;text-transform:uppercase;color:rgba(255,255,255,.86);margin-bottom:24px}
+.h-title{font-size:clamp(46px,7.2vw,112px);line-height:.98;font-weight:400;letter-spacing:.01em;text-transform:uppercase;color:#fff;text-shadow:0 2px 40px rgba(2,24,30,.32)}
+.h-title span{display:block}
+.h-lead{font-size:clamp(19px,1.75vw,26px);line-height:1.5;font-weight:500;color:#fff;margin-top:32px;text-shadow:0 1px 18px rgba(2,24,30,.35)}
+.h-sub{font-size:clamp(15px,1.15vw,17px);line-height:1.75;color:rgba(255,255,255,.86);margin-top:14px}
+.h-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:40px}
+.h-btn-main{background:#fff;color:var(--navy)}
+.h-btn-main:hover{background:var(--mist);box-shadow:0 14px 30px -14px rgba(2,24,30,.6)}
+.h-btn-line{color:#fff;border-color:rgba(255,255,255,.7);background:rgba(4,30,36,.14);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.h-btn-line:hover{background:rgba(255,255,255,.14);border-color:#fff}
+
+/* שתי הפינות התחתונות, כמו ברפרנס: משמאל המשפט, מימין היעדים */
+.h-corner{position:absolute;bottom:clamp(32px,6vh,64px);font-size:12px;font-weight:400;line-height:2;letter-spacing:.32em;text-transform:uppercase;color:rgba(246,239,227,.86);text-align:left/* qa-allow: physical (טקסט באנגלית, LTR) */}
+.h-corner::after{content:"";display:block;width:32px;height:1px;margin-top:14px;background:var(--gold-lt);transform-origin:left;/* qa-allow: line (הקו הזהוב הקצר מהרפרנס) */}
+.h-tag{left:var(--pad)/* qa-allow: physical (מיקום מהרפרנס) */}
+.h-dest{right:var(--pad)/* qa-allow: physical (מיקום מהרפרנס) */}
+.h-dest ul{display:flex;flex-direction:column}
+.h-dest a{position:relative;display:inline-block;transition:color .25s}
+.h-dest a::before{content:"";position:absolute;right:calc(100% + .9em)/* qa-allow: physical (רשימה באנגלית, LTR) */;top:50%;width:18px;height:1px;background:var(--gold-lt);transform:scaleX(0);transform-origin:right/* qa-allow: physical (LTR) */;transition:transform .35s var(--ease)/* qa-allow: line (סימון ריחוף) */}
+.h-dest a:hover,.h-dest a:focus-visible{color:#fff}
+.h-dest a:hover::before,.h-dest a:focus-visible::before{transform:none}
+
+/* רמז גלילה */
+.h-cue{position:absolute;inset-inline:0;margin-inline:auto;bottom:clamp(24px,4vh,40px);width:1px;height:40px;background:rgba(246,239,227,.28);overflow:hidden}
+.h-cue::after{content:"";position:absolute;inset:0;background:var(--gold-lt);transform:translateY(-100%);animation:cue 2.6s var(--ease) infinite 2.6s}
+@keyframes cue{0%{transform:translateY(-100%)}55%{transform:translateY(0)}100%{transform:translateY(100%)}}
+
+.h-pause{position:absolute;top:96px;inset-inline-start:var(--pad);width:40px;height:40px;border-radius:50%;border:1px solid rgba(246,239,227,.4);background:rgba(4,30,36,.22);color:#f6efe3;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:.75;transition:opacity .25s,background .25s}
+.h-pause:hover,.h-pause:focus-visible{opacity:1;background:rgba(4,30,36,.45)}
+.h-pause .ic{width:15px;height:15px}
+.h-pause.paused .ic{fill:currentColor}
+
+/* פתיחה: השורות עולות מהמים אחת אחרי השנייה, ואז הפינות */
+.js .h-txt>*{opacity:0;transform:translateY(18px)}
+.js .h-corner,.js .h-cue{opacity:0;transform:translateY(10px)}
+.js .h-corner::after{transform:scaleX(0)}
+.h-hero.ready .h-txt>*{opacity:1;transform:none;transition:opacity 1.4s var(--ease),transform 1.6s var(--ease)}
+.h-hero.ready .h-txt>:nth-child(1){transition-delay:.25s}
+.h-hero.ready .h-txt>:nth-child(2){transition-delay:.4s}
+.h-hero.ready .h-txt>:nth-child(3){transition-delay:.55s}
+.h-hero.ready .h-txt>:nth-child(4){transition-delay:.85s}
+.h-hero.ready .h-txt>:nth-child(5){transition-delay:1s}
+.h-hero.ready .h-txt>:nth-child(6){transition-delay:1.2s}
+.h-hero.ready .h-corner,.h-hero.ready .h-cue{opacity:1;transform:none;transition:opacity 1.2s var(--ease) 1.6s,transform 1.2s var(--ease) 1.6s}
+.h-hero.ready .h-dest{transition-delay:1.8s}
+.h-hero.ready .h-corner::after{transform:none;transition:transform 1s var(--ease) 2.4s}
+
+/* ---------- היעדים: שלוש תמונות ענקיות ---------- */
+.dest{display:grid;gap:8px;padding-block:8px;background:var(--paper)}
+.db{position:relative;height:clamp(560px,88vh,920px);display:flex;align-items:center;overflow:hidden;isolation:isolate;color:#fff;background:#0f3b47}
+.db-media{position:absolute;inset:-7% 0;z-index:-2;will-change:transform}
+.db-media img{width:100%;height:100%;object-fit:cover;transform:scale(1.1);transition:transform 2.2s var(--ease)}
+.db.in .db-media img{transform:none}
+/* כהות עדינה מצד הטקסט (ימין) ולמטה, כדי שהשם הלבן יישב על התמונה */
+.db::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(270deg,rgba(5,24,36,.72) 0%,rgba(5,24,36,.46) 36%,rgba(5,24,36,0) 68%),linear-gradient(0deg,rgba(5,24,36,.34) 0%,rgba(5,24,36,0) 40%)}
+.db-in{position:relative}
+.db-txt{max-width:540px}
+.db-eye{display:flex;align-items:center;flex-wrap:wrap;gap:14px;font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+.db-eye::before{content:"";width:32px;height:1px;background:var(--gold-lt)/* qa-allow: line (קו זהוב קצר לפני שם היעד באנגלית) */}
+.db-home{letter-spacing:.04em;text-transform:none;font-size:14px;font-weight:500;padding:4px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.55)/* qa-allow: line (תגית "יעד הבית שלנו") */;background:rgba(255,255,255,.08)}
+.db-name{font-size:clamp(76px,11vw,172px);line-height:.95;font-weight:700;letter-spacing:-.025em;color:#fff;margin-block:18px 24px;text-shadow:0 4px 50px rgba(3,20,30,.28)}
+.db-p{font-size:clamp(17px,1.35vw,20px);line-height:1.65;color:rgba(255,255,255,.94);max-width:440px}
+.db-btn{margin-top:32px;color:#fff;border-color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+a.db-btn:hover{background:#fff;color:var(--navy);border-color:#fff}
+.db-btn.is-soon{color:rgba(255,255,255,.85);border-color:rgba(255,255,255,.4)}
+.db-btn.is-soon em{background:rgba(255,255,255,.16);color:#fff}
+/* הטקסט עולה אחרי התמונה */
+.js .db-txt>*{opacity:0;transform:translateY(22px)}
+.db.in .db-txt>*{opacity:1;transform:none;transition:opacity 1s var(--ease),transform 1.2s var(--ease)}
+.db.in .db-txt>:nth-child(2){transition-delay:.12s}
+.db.in .db-txt>:nth-child(3){transition-delay:.26s}
+.db.in .db-txt>:nth-child(4){transition-delay:.38s}
+
+/* ---------- למה Gili's Tours ---------- */
+.why-h{background:var(--paper)}
+.wh-g{display:grid;grid-template-columns:repeat(3,1fr);gap:64px 56px}
+.wh-g li{padding-top:32px;border-top:1px solid var(--line)/* qa-allow: line (קו דק מעל כל יתרון) */}
+.wh-g .ic-l{width:40px;height:40px;stroke:var(--gold);stroke-width:1.2}
+.wh-g h3{font-size:21px;margin-block:24px 12px}
+.wh-g p{font-size:16.5px}
+.wh-g .rv:nth-child(3n+2){transition-delay:.08s}
+.wh-g .rv:nth-child(3n){transition-delay:.16s}
+
+/* ---------- משפט גדול ---------- */
+.stmt{background:var(--paper);padding-block:clamp(88px,11vw,192px);text-align:center}
+.stmt-line{display:block;width:1px;height:56px;margin:0 auto 40px;background:var(--gold)/* qa-allow: line (קו זהוב אנכי מעל המשפט) */}
+.stmt-p{max-width:1000px;margin-inline:auto;font-size:clamp(27px,3.3vw,50px);line-height:1.38;font-weight:400;color:var(--navy);letter-spacing:-.01em;text-wrap:balance}
+.stmt-b{font-weight:500}
+.stmt-p .w{opacity:.16;transition:opacity .5s var(--ease)}
+.stmt-p .w.on{opacity:1}
+
+/* ---------- סימונה ואבישי ---------- */
+.about{background:var(--mist)}
+.ab-g{display:grid;grid-template-columns:5fr 6fr;gap:clamp(40px,6vw,96px);align-items:start}
+.ab-img{position:sticky;top:112px;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-lg)}
+.ab-img img{width:100%;height:auto}
+.ab-txt h2{font-size:clamp(40px,4.6vw,64px);line-height:1.05}
+.ab-role{margin-top:12px;font-size:18px;font-weight:500;color:var(--gold-2)}
+.ab-body{margin-top:40px}
+.ab-body p+p{margin-top:18px}
+.ab-big{font-size:clamp(21px,1.9vw,26px);line-height:1.5;color:var(--navy)}
+.ab-tri{margin-top:40px}
+.ab-tri li{padding-block:16px;font-size:clamp(19px,1.6vw,22px);font-weight:500;color:var(--navy);border-top:1px solid var(--line-2)/* qa-allow: line (שלוש שורות העיקרון) */}
+.ab-tri li:last-child{border-bottom:1px solid var(--line-2)/* qa-allow: line (סגירת הרשימה) */}
+
+.sa{display:grid;grid-template-columns:6fr 5fr;gap:clamp(40px,6vw,96px);align-items:start;margin-top:clamp(88px,10vw,144px)}
+.sa-h{font-size:clamp(26px,2.8vw,38px);line-height:1.25;margin-bottom:24px}
+.sa-txt p+p{margin-top:16px}
+.sa-q{margin-block:24px;padding-inline-start:24px;border-inline-start:2px solid var(--gold)/* qa-allow: line (קו זהוב לציטוט) */}
+.sa-q p{font-size:clamp(22px,2.3vw,32px);line-height:1.35;color:var(--navy);font-weight:500}
+.sa-txt .sa-strong{font-size:20px;line-height:1.55;color:var(--navy);font-weight:500;margin-top:24px}
+.sa-img{position:sticky;top:112px;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-lg)}
+.sa-img img{width:100%;height:auto}
+.sa-end{text-align:center;margin-top:clamp(72px,8vw,128px);padding-inline:var(--pad);font-size:clamp(14px,1.4vw,19px);letter-spacing:.34em;text-transform:uppercase;color:var(--navy)}
+.sa-end strong{display:block;margin-top:16px;font-size:clamp(30px,4.4vw,64px);font-weight:400;letter-spacing:.14em;color:var(--gold)}
+.js .sa-w{display:inline-block;opacity:0;transform:translateY(14px)}
+.js strong.sa-w{display:block}
+.sa-end.in .sa-w{opacity:1;transform:none;transition:opacity 1s var(--ease),transform 1.1s var(--ease)}
+.sa-end.in .sa-w:nth-child(2){transition-delay:.18s}
+.sa-end.in .sa-w:nth-child(3){transition-delay:.36s}
+.sa-end.in .sa-w:nth-child(4){transition-delay:.7s}
+
+/* ---------- אנחנו מכירים אתכם ---------- */
+.pers{background:var(--paper)}
+.pers-g{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);align-items:center}
+.pers-img{order:2;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:1/1}
+.pers-img img{width:100%;height:100%;object-fit:cover}
+.pers-txt h2{font-size:clamp(30px,3.2vw,44px);line-height:1.22}
+.h2-soft{display:block;font-weight:400;color:var(--gold-2);margin-top:6px}
+.pers-q{margin-block:32px}
+.pers-q li{padding-block:14px;font-size:clamp(19px,1.7vw,23px);color:var(--navy);border-bottom:1px solid var(--line)/* qa-allow: line (שורת שאלה) */}
+.pers-q .rv:nth-child(2){transition-delay:.08s}
+.pers-q .rv:nth-child(3){transition-delay:.16s}
+.pers-q .rv:nth-child(4){transition-delay:.24s}
+.pers-start{font-size:18px;font-weight:500;color:var(--gold-2);margin-bottom:12px}
+.pers-end{margin-top:20px}
+.pers-end strong{display:block;margin-top:6px;color:var(--navy);font-weight:500}
+
+/* ---------- מה אפשר להזמין ---------- */
+.book{background:var(--mist)}
+.bk-g{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.bk-img{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:var(--mist-2)}
+.bk-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.bk:hover .bk-img img{transform:scale(1.05)}
+.bk h3{margin-top:20px;font-size:20px}
+.bk p{margin-top:8px;font-size:16px}
+.bk-g .rv:nth-child(2){transition-delay:.08s}
+.bk-g .rv:nth-child(3){transition-delay:.16s}
+.bk-g .rv:nth-child(4){transition-delay:.24s}
+
+/* ---------- המספרים ---------- */
+.nums{position:relative;isolation:isolate;padding-block:clamp(72px,8vw,128px);background:#f4f8f8}
+.nums-bg{position:absolute;inset:0;z-index:-1;background:linear-gradient(rgba(246,250,250,.84),rgba(246,250,250,.9)),url(../img/num-bg-1200.webp) center/cover}
+.nums-g{display:grid;grid-template-columns:repeat(4,1fr)}
+.nums-g li{text-align:center;padding-inline:24px}
+.nums-g li+li{border-inline-start:1px solid var(--line-2)/* qa-allow: line (מפריד בין המספרים) */}
+.n{display:block;font-size:clamp(50px,5.8vw,88px);line-height:1;font-weight:400;letter-spacing:-.02em;color:var(--navy);font-variant-numeric:tabular-nums}
+.n-word{letter-spacing:0}
+.n-l{display:block;margin-top:16px;font-size:16px;color:var(--text)}
+.nums-g .rv:nth-child(2){transition-delay:.1s}
+.nums-g .rv:nth-child(3){transition-delay:.2s}
+.nums-g .rv:nth-child(4){transition-delay:.3s}
+
+/* ---------- ביקורות: מסגרות שמורות לצילומי מסך ---------- */
+.revs{background:var(--paper)}
+.rs-g{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:center}
+.rs{min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:32px;text-align:center;border-radius:var(--r);background:var(--mist);border:1px dashed var(--line-2)/* qa-allow: line (מסגרת שמורה מסומנת) */}
+.rs-tall{min-height:400px}
+.rs-q{width:34px;height:34px;fill:var(--soft)}
+.rs b{display:block;color:var(--navy);font-size:17px;font-weight:500}
+.rs small{display:block;margin-top:6px;font-size:14px;color:var(--muted)}
+.rs-g .rv:nth-child(2){transition-delay:.08s}
+.rs-g .rv:nth-child(3){transition-delay:.16s}
+
+/* ---------- באנר גדול ---------- */
+.bnr{position:relative;min-height:max(620px,92svh);display:flex;align-items:center;overflow:hidden;isolation:isolate;color:#fff;background:#0f3b47}
+.bnr-media{position:absolute;inset:-8% 0;z-index:-2;will-change:transform}
+.bnr-media img{width:100%;height:100%;object-fit:cover}
+.bnr::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 70% at 50% 50%,rgba(5,24,36,.5) 0%,rgba(5,24,36,.22) 100%),linear-gradient(180deg,rgba(5,24,36,.18),rgba(5,24,36,.4))}
+.bnr-in{text-align:center;padding-block:clamp(96px,10vw,144px)}
+.bnr-lines{color:#fff;font-size:clamp(36px,5vw,74px);line-height:1.14;letter-spacing:-.015em;text-shadow:0 2px 40px rgba(3,20,30,.3)}
+.bnr-lines span{display:block}
+.bnr-lines .rv:nth-child(2){transition-delay:.2s}
+.bnr-lines .rv:nth-child(3){transition-delay:.4s}
+.bnr-p{max-width:660px;margin:32px auto 40px;font-size:clamp(18px,1.6vw,22px);line-height:1.6;color:rgba(255,255,255,.94);transition-delay:.6s}
+.bnr-btn{transition-delay:.75s}
+
+/* ---------- טאבלט ---------- */
+@media (max-width:1100px){
+  .h-corner,.h-cue{display:none}
+  .wh-g{grid-template-columns:repeat(2,1fr);gap:56px 48px}
+  .bk-g{grid-template-columns:repeat(2,1fr);gap:40px 28px}
+  .rs-g{grid-template-columns:repeat(3,1fr);gap:16px}
+}
+@media (max-height:760px) and (min-width:1101px){
+  .h-corner,.h-cue{display:none}
+}
+@media (max-width:960px){
+  .h-pause{top:84px}
+  .ab-g,.sa,.pers-g{grid-template-columns:1fr}
+  .ab-img,.sa-img{position:relative;top:auto}
+  .ab-img{max-width:640px}
+  .sa-img{order:-1;max-width:520px}
+  .pers-img{order:-1;aspect-ratio:4/3}
+  .nums-g{grid-template-columns:repeat(2,1fr);row-gap:48px}
+  .nums-g li:nth-child(3){border-inline-start:0}
+}
+
+/* ---------- טלפון ---------- */
+@media (max-width:700px){
+  .h-center{padding:88px var(--pad) 72px}
+  .h-palm{width:30px;height:30px;margin-bottom:12px}
+  .h-brand{font-size:11px;margin-bottom:18px}
+  .h-title{font-size:clamp(34px,10vw,44px);line-height:1.04}
+  .h-lead{font-size:19px;margin-top:24px}
+  .h-sub{font-size:15px}
+  .br-d{display:none}
+  .h-btns{flex-direction:column;align-items:stretch;gap:12px;margin-top:32px;width:min(100%,340px);margin-inline:auto}
+  .h-pause{top:80px;width:36px;height:36px}
+
+  .dest{gap:12px;padding:12px}
+  .db{height:max(540px,80svh);border-radius:var(--r);align-items:flex-end}
+  .db::after{background:linear-gradient(0deg,rgba(5,24,36,.74) 0%,rgba(5,24,36,.4) 42%,rgba(5,24,36,0) 72%)}
+  .db-in{padding-block:32px}
+  .db-name{font-size:clamp(60px,18vw,84px);margin-block:12px 16px}
+  .db-p{font-size:16.5px}
+  .db-btn{margin-top:24px}
+
+  .wh-g{grid-template-columns:1fr;gap:40px}
+  .wh-g li{padding-top:28px;display:grid;grid-template-columns:40px 1fr;column-gap:20px}
+  .wh-g .ic-l{grid-row:span 2;width:34px;height:34px}
+  .wh-g h3{margin-block:0 8px;font-size:19px}
+  .wh-g p{font-size:16px}
+  .stmt-line{height:40px;margin-bottom:28px}
+
+  .ab-body{margin-top:28px}
+  .sa-end{letter-spacing:.24em}
+  .sa-end strong{letter-spacing:.08em}
+
+  .bk-g{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:78%;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:calc(-1*var(--pad));padding-inline:var(--pad);scroll-padding-inline:var(--pad)}
+  .bk-g::-webkit-scrollbar{display:none}
+  .bk{scroll-snap-align:start}
+  .bk-img{aspect-ratio:4/4.4}
+
+  .nums-g li{padding-inline:12px}
+  .n-l{font-size:15px;margin-top:12px}
+
+  .rs-g{grid-template-columns:1fr;gap:16px}
+  .rs,.rs-tall{min-height:200px}
+  .rs-g .rs:nth-child(3){display:none}
+
+  .bnr{min-height:max(560px,88svh)}
+  .bnr-p{margin-block:24px 32px}
+  .bnr-btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .js .h-txt>*,.js .h-corner,.js .h-cue,.js .db-txt>*,.js .sa-w{opacity:1;transform:none}
+  .js .h-corner::after{transform:none}
+  .h-cue::after{animation:none}
+  .h-water{transition:none}
+  .db-media img{transform:none}
+  .stmt-p .w{opacity:1}
+}
