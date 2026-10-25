@@ -11,8 +11,11 @@
 <link rel="icon" href="img/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preload" href="fonts/google-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css?v=1792938531">
-<link rel="stylesheet" href="css/home.css?v=1792938531">
+<link rel="preload" href="fonts/cormorant-garamond-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="img/hv-hero-1600.webp" imagesrcset="img/hv-hero-960.webp 960w, img/hv-hero-1600.webp 1600w, img/hv-hero-2560.webp 2560w" imagesizes="100vw" media="(min-width:701px)">
+<link rel="preload" as="image" href="img/hv-hero-m-720.webp" imagesrcset="img/hv-hero-m-720.webp 720w, img/hv-hero-m-1080.webp 1080w" imagesizes="100vw" media="(max-width:700px)">
+<link rel="stylesheet" href="css/site.css?v=1792959300">
+<link rel="stylesheet" href="css/home.css?v=1792959300">
 <script>document.documentElement.classList.add('js')</script>
 <script src="https://crm.liavmatzri.co.il/review.js" defer></script>
 </head>
@@ -22,17 +25,21 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h3.2l1.6 4.2-2.1 1.4a11 11 0 0 0 7.2 7.2l1.4-2.1 4.2 1.6V19a1.5 1.5 0 0 1-1.6 1.5A16.5 16.5 0 0 1 3.5 5.1 1.5 1.5 0 0 1 5 3.5z"/></symbol>
-    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></symbol>
-    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5L8 5.5z"/></symbol>
     <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5z"/><path d="M8.6 7.6c.2-.4.5-.4.8-.4h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.6.8c-.1.2-.2.3 0 .6.5.9 1.2 1.7 2 2.3.6.4 1 .6 1.3.7.2.1.4 0 .5-.1l.8-1c.2-.2.4-.2.6-.1l1.9.9c.3.1.4.2.4.4 0 .5-.1 1.2-.7 1.6-.5.4-1.4.7-2.4.4a11.4 11.4 0 0 1-6.3-5.6c-.6-1.2-.6-2.4.1-3.3z" fill="currentColor" stroke="none"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
-    <symbol id="i-palm" viewBox="0 0 32 32"><path d="M16 29V14M16 14c-2-4-6-5-10-4M16 14c2-4 6-5 10-4M16 14c-4-2-8 0-10 3M16 14c4-2 8 0 10 3M16 14c0-4 2-8 5-9M5 29h22"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 32 32"><path d="M16 29s9-8.2 9-15a9 9 0 0 0-18 0c0 6.8 9 15 9 15z"/><circle cx="16" cy="14" r="3.2"/></symbol>
-    <symbol id="i-hand" viewBox="0 0 32 32"><path d="M3 14l5-5 5 2 3-2 4 1 4 4 5-1M3 14l5 7M29 13l-5 8M11 18l3 3c.8.8 2 .8 2.8 0 .8-.8.8-2 0-2.8M14 15l4.5 4.5c.8.8 2 .8 2.8 0s.8-2 0-2.8L17 12.5M9 21l2.5 2.5c.8.8 2 .8 2.8 0M12 23.5l1.5 1.5c.8.8 2 .8 2.8 0s.8-2 0-2.8"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <!-- אייקוני קו דקים בצבע חול, כמו בסקיצות של סימונה -->
+    <symbol id="i-tag" viewBox="0 0 32 32"><path d="M4.5 6.5v8.2c0 .8.3 1.6.9 2.1l11 11c1.2 1.2 3 1.2 4.2 0l6.8-6.8c1.2-1.2 1.2-3 0-4.2l-11-11c-.6-.6-1.3-.9-2.1-.9H6.5a2 2 0 0 0-2 1.6z"/><circle cx="10.5" cy="10.5" r="2.2"/></symbol>
     <symbol id="i-compass" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12"/><path d="m20.5 11.5-2.8 6.2-6.2 2.8 2.8-6.2 6.2-2.8z"/><path d="M16 4v2.5M16 25.5V28M4 16h2.5M25.5 16H28"/></symbol>
-    <symbol id="i-users" viewBox="0 0 32 32"><circle cx="12" cy="11" r="4.5"/><path d="M4 27c0-4.7 3.6-8 8-8s8 3.3 8 8"/><circle cx="22.5" cy="12.5" r="3.5"/><path d="M21 19.3c4 0 7 2.7 7 6.7"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 32 32"><path d="M16 27S4 19.6 4 11.6A6.6 6.6 0 0 1 16 8a6.6 6.6 0 0 1 12 3.6C28 19.6 16 27 16 27z"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 32 32"><path d="M3 14l5-5 5 2 3-2 4 1 4 4 5-1M3 14l5 7M29 13l-5 8M11 18l3 3c.8.8 2 .8 2.8 0 .8-.8.8-2 0-2.8M14 15l4.5 4.5c.8.8 2 .8 2.8 0s.8-2 0-2.8L17 12.5M9 21l2.5 2.5c.8.8 2 .8 2.8 0M12 23.5l1.5 1.5c.8.8 2 .8 2.8 0s.8-2 0-2.8"/></symbol>
     <symbol id="i-headset" viewBox="0 0 32 32"><path d="M6 18v-3a10 10 0 0 1 20 0v3"/><rect x="4" y="17" width="5" height="8" rx="2"/><rect x="23" y="17" width="5" height="8" rx="2"/><path d="M26 25c0 2.2-2.5 3.5-6.5 3.5H17"/></symbol>
-    <symbol id="i-shield" viewBox="0 0 32 32"><path d="M16 3.5 26 7v8c0 6.5-4.3 11.2-10 13.5C10.3 26.2 6 21.5 6 15V7l10-3.5z"/><path d="m11.5 15.8 3.2 3.2 6-6.4"/></symbol>
+    <symbol id="i-users" viewBox="0 0 32 32"><circle cx="16" cy="9" r="4"/><path d="M9 27v-4.5c0-3.6 3.1-6.5 7-6.5s7 2.9 7 6.5V27"/><circle cx="7" cy="12" r="3"/><path d="M2.5 25v-3c0-2.6 2-4.6 4.5-4.6"/><circle cx="25" cy="12" r="3"/><path d="M29.5 25v-3c0-2.6-2-4.6-4.5-4.6"/></symbol>
+    <symbol id="i-palm" viewBox="0 0 32 32"><path d="M16.5 29c.6-5.3.2-10.6-1.5-15.5M15 13.5c-2.6-3.3-6.7-4.2-10.5-2.6M15 13.5c1.6-3.8 5.6-5.6 9.6-4.6M15 13.5c-4.2-1-8 .9-9.6 4.6M15 13.5c4.1-.6 7.8 1.5 9 5.3M15 13.5c-.6-4 1.3-7.6 5-9.4M10 29h12"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 32 32"><circle cx="16" cy="16" r="5.5"/><path d="M16 3.5v3M16 25.5v3M3.5 16h3M25.5 16h3M7.2 7.2l2.1 2.1M22.7 22.7l2.1 2.1M7.2 24.8l2.1-2.1M22.7 9.3l2.1-2.1"/></symbol>
+    <symbol id="i-case" viewBox="0 0 32 32"><rect x="8" y="9" width="16" height="17" rx="2.5"/><path d="M12.5 9V5.5h7V9M12.5 13v9M19.5 13v9M11 26v2M21 26v2"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 32 32"><path d="M3.5 25V8M3.5 19h25v6M28.5 19v-3.5a3.5 3.5 0 0 0-3.5-3.5H14v7"/><rect x="6.5" y="12.5" width="5" height="4" rx="2"/></symbol>
+    <symbol id="i-boat" viewBox="0 0 32 32"><path d="M15 4v18M15 4 6 20h9M17.5 8.5 25 20h-7.5M3.5 23.5h25l-2.5 4H6z"/></symbol>
     <symbol id="i-quote" viewBox="0 0 32 32"><path d="M13 9c-4.5 1.3-7 4.6-7 9.5V24h7v-7H9.5c.2-2.8 1.6-4.6 4-5.5L13 9zM26 9c-4.5 1.3-7 4.6-7 9.5V24h7v-7h-3.5c.2-2.8 1.6-4.6 4-5.5L26 9z"/></symbol>
   </defs>
 </svg>
@@ -45,18 +52,17 @@
     </a>
     <nav class="nav" id="nav" aria-label="ראשי">
       <ul>
-        <li><a href="#dest">קורפו</a></li>
+        <li><a href="#dest">יעדים</a></li>
         <li><a href="seychelles.html">סיישל</a></li>
-        <li><a href="#dest">מאוריציוס</a></li>
-        <li><a href="#book">מלונות</a></li>
-        <li><a href="#">מדריכים</a></li>
         <li><a href="#about">אודות</a></li>
+        <li><a href="#book">חוויות ומלונות</a></li>
+        <li><a href="#revs">ביקורות</a></li>
+        <li><a href="#lead">צור קשר</a></li>
         <li class="nav-en"><a href="#" lang="en" hreflang="en">EN</a></li>
       </ul>
     </nav>
     <div class="hdr-act">
-      <a class="hdr-tel" href="tel:+972524650594" aria-label="טלפון: 052-4650594"><svg class="ic"><use href="#i-phone"/></svg><span dir="ltr">052-4650594</span></a>
-      <a class="btn btn-sm btn-gold" href="https://wa.me/972544050071?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%A9%D7%AA%D7%AA%D7%9B%D7%A0%D7%A0%D7%95%20%D7%9C%D7%99%20%D7%90%D7%AA%20%D7%94%D7%97%D7%95%D7%A4%D7%A9%D7%94" target="_blank" rel="noopener">תכננו לי חופשה</a>
+      <a class="btn btn-sm hdr-cta" href="#lead">תכננו לי את החופשה <svg class="ic"><use href="#i-arrow"/></svg></a>
       <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="תפריט"><span></span><span></span></button>
     </div>
   </div>
@@ -64,221 +70,257 @@
 
 <main id="main">
 
-<!-- פתיחה: מים טורקיז חיים עם צל דקל (הרפרנס של סימונה, 14:54) והטקסט מהמבנה שלה (15:53) -->
-<section class="h-hero" id="hHero" aria-labelledby="h-t">
-  <canvas class="h-water" id="hWater" aria-hidden="true"></canvas>
-  <div class="h-shade" aria-hidden="true"></div>
-  <div class="h-center">
-    <div class="h-txt">
-      <svg class="ic-l h-palm" aria-hidden="true"><use href="#i-palm"/></svg>
-      <p class="h-brand" lang="en">Gili’s Tours</p>
-      <h1 class="h-title" id="h-t" lang="en"><span>The art of</span> <span>traveling well</span></h1>
-      <p class="h-lead">אנחנו מאמינים שההבדל בין חופשה טובה לחופשה בלתי נשכחת <br class="br-d">נמצא במי שמתכנן אותה</p>
-      <p class="h-sub">חופשות בהתאמה אישית ביעדים שאנחנו מכירים באמת, <br class="br-d">עם המלונות הנכונים, החוויות הנכונות והאנשים הנכונים בדרך.</p>
-      <div class="h-btns">
-        <a class="btn btn-lg h-btn-main" href="https://wa.me/972544050071?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%A9%D7%AA%D7%AA%D7%9B%D7%A0%D7%A0%D7%95%20%D7%9C%D7%99%20%D7%90%D7%AA%20%D7%94%D7%97%D7%95%D7%A4%D7%A9%D7%94" target="_blank" rel="noopener">תכננו לי את החופשה</a>
-        <a class="btn btn-lg h-btn-line" href="#dest">גלו את היעדים שלנו</a>
-      </div>
+<!-- פתיחה: צילום אחד חזק של ים ויאכטה, כמו בשתי הסקיצות של סימונה (20:14) -->
+<section class="hv-hero" id="hHero" aria-labelledby="h-t">
+  <picture class="hv-hero-media" aria-hidden="true">
+    <source media="(max-width:700px)" srcset="img/hv-hero-m-720.webp 720w, img/hv-hero-m-1080.webp 1080w" sizes="100vw">
+    <img src="img/hv-hero-1600.webp" srcset="img/hv-hero-960.webp 960w, img/hv-hero-1600.webp 1600w, img/hv-hero-2560.webp 2560w" sizes="100vw" alt="" width="2560" height="1440" fetchpriority="high">
+  </picture>
+  <div class="hv-hero-in">
+    <h1 class="hv-title" id="h-t" lang="en"><span>The art of</span> <span>traveling well</span></h1>
+    <p class="hv-intro">אנחנו מאמינים שההבדל בין חופשה טובה <br class="br-d">לחופשה בלתי נשכחת נמצא במי שמתכנן אותה</p>
+    <p class="hv-sub">חופשות בהתאמה אישית ביעדים שאנחנו מכירים באמת, <br class="br-d">עם המלונות הנכונים, החוויות הנכונות והאנשים הנכונים בדרך.</p>
+    <div class="hv-btns">
+      <a class="btn btn-lg hv-btn-main" href="https://wa.me/972544050071?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9D%20%D7%94%D7%9E%D7%95%D7%9E%D7%97%D7%94%20%D7%A9%D7%9C%D7%9B%D7%9D%20%D7%A2%D7%9C%20%D7%97%D7%95%D7%A4%D7%A9%D7%94" target="_blank" rel="noopener">לשיחה עם המומחה שלנו <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-lg hv-btn-line" href="#dest">גלו את היעדים שלנו</a>
     </div>
   </div>
-  <p class="h-corner h-tag" lang="en" dir="ltr">Travel<br>experiences<br>beyond<br>destinations</p>
-  <nav class="h-corner h-dest" aria-label="היעדים שלנו" dir="ltr">
-    <ul lang="en">
-      <li><a href="#db-corfu">Corfu</a></li>
-      <li><a href="seychelles.html">Seychelles</a></li>
-      <li><a href="#db-mru">Mauritius</a></li>
-    </ul>
-  </nav>
-  <span class="h-cue" aria-hidden="true"></span>
-  <button class="h-pause" id="hPause" aria-label="עצירת תנועת המים" aria-pressed="false"><svg class="ic"><use href="#i-pause"/></svg></button>
+  <p class="hv-corner hv-tag" lang="en" dir="ltr">Travel<br>experiences<br>beyond<br>destinations</p>
+  <p class="hv-corner hv-places" lang="en" dir="ltr">Corfu<br>Seychelles<br>Mauritius</p>
 </section>
 
-<!-- היעדים שלנו: שלוש תמונות ענקיות, השם גדול בלבן -->
-<section class="dest" id="dest" aria-labelledby="dest-t">
+<!-- היעדים שלנו: שלוש תמונות גדולות אחת מתחת לשנייה, לא ברוחב המסך, עם רווח לבן ביניהן; התמונות ששלחה -->
+<section class="hv-dest" id="dest" aria-labelledby="dest-t">
   <h2 class="sr" id="dest-t">היעדים שלנו</h2>
 
-  <article class="db" id="db-corfu" aria-labelledby="db-corfu-t">
-    <div class="db-media" aria-hidden="true"><img src="img/dest-corfu-1600.webp" srcset="img/dest-corfu-960.webp 960w, img/dest-corfu-1600.webp 1600w, img/dest-corfu-2400.webp 2400w" sizes="100vw" alt="" width="2400" height="1599" loading="lazy" decoding="async"></div>
-    <div class="wrap db-in">
-      <div class="db-txt">
-        <p class="db-eye"><span lang="en">Corfu</span><span class="db-home">יעד הבית שלנו</span></p>
-        <h3 class="db-name" id="db-corfu-t">קורפו</h3>
-        <p class="db-p">האי שבו הכול התחיל. <br>5 שנים של היכרות, קשרים מקומיים וחוויות שאנחנו מכירים כמעט כמו המקומיים.</p>
-        <span class="btn db-btn is-soon">לגלות את קורפו <em>העמוד בהכנה</em></span>
-      </div>
+  <article class="hd" id="db-corfu" aria-labelledby="db-corfu-t">
+    <picture class="hd-media" aria-hidden="true">
+      <source media="(max-width:700px)" srcset="img/hv-corfu-m-720.webp 720w, img/hv-corfu-m-1080.webp 1080w" sizes="100vw">
+      <img src="img/hv-corfu-1600.webp" srcset="img/hv-corfu-960.webp 960w, img/hv-corfu-1600.webp 1600w, img/hv-corfu-2160.webp 2160w" sizes="(max-width:1440px) 100vw, 1440px" alt="" width="2160" height="919" loading="lazy" decoding="async">
+    </picture>
+    <div class="hd-txt">
+      <p class="hd-en" lang="en">Corfu</p>
+      <h3 class="hd-name" id="db-corfu-t">קורפו</h3>
+      <p class="hd-home">יעד הבית שלנו</p>
+      <p class="hd-p">האי שבו הכול התחיל. <br>5 שנים של היכרות, קשרים מקומיים וחוויות שאנחנו מכירים כמו מקומיים.</p>
+      <span class="btn hd-btn is-soon">לגלות את קורפו <em>העמוד בהכנה</em></span>
     </div>
   </article>
 
-  <article class="db" id="db-sey" aria-labelledby="db-sey-t">
-    <div class="db-media" aria-hidden="true"><img src="img/dest-sey-1600.webp" srcset="img/dest-sey-960.webp 960w, img/dest-sey-1600.webp 1600w, img/dest-sey-2400.webp 2400w" sizes="100vw" alt="" width="2400" height="1350" loading="lazy" decoding="async"></div>
-    <div class="wrap db-in">
-      <div class="db-txt">
-        <p class="db-eye"><span lang="en">Seychelles</span></p>
-        <h3 class="db-name" id="db-sey-t">סיישל</h3>
-        <p class="db-p">איים טרופיים, חופים שנראים לא אמיתיים ומלונות מהיפים בעולם.</p>
-        <a class="btn db-btn" href="seychelles.html">לגלות את סיישל <svg class="ic"><use href="#i-arrow"/></svg></a>
-      </div>
+  <article class="hd" id="db-sey" aria-labelledby="db-sey-t">
+    <picture class="hd-media" aria-hidden="true">
+      <source media="(max-width:700px)" srcset="img/hv-sey-m-720.webp 720w, img/hv-sey-m-1080.webp 1080w" sizes="100vw">
+      <img src="img/hv-sey-1472.webp" srcset="img/hv-sey-960.webp 960w, img/hv-sey-1472.webp 1472w" sizes="(max-width:1440px) 100vw, 1440px" alt="" width="1472" height="626" loading="lazy" decoding="async">
+    </picture>
+    <div class="hd-txt">
+      <p class="hd-en" lang="en">Seychelles</p>
+      <h3 class="hd-name" id="db-sey-t">סיישל</h3>
+      <p class="hd-p">איים טרופיים, חופים שנראים לא אמיתיים ומלונות מהיפים בעולם.</p>
+      <a class="btn hd-btn" href="seychelles.html">לגלות את סיישל <svg class="ic"><use href="#i-arrow"/></svg></a>
     </div>
   </article>
 
-  <article class="db" id="db-mru" aria-labelledby="db-mru-t">
-    <div class="db-media" aria-hidden="true"><img src="img/dest-mru-1600.webp" srcset="img/dest-mru-960.webp 960w, img/dest-mru-1600.webp 1600w, img/dest-mru-2400.webp 2400w" sizes="100vw" alt="" width="2400" height="1600" loading="lazy" decoding="async"></div>
-    <div class="wrap db-in">
-      <div class="db-txt">
-        <p class="db-eye"><span lang="en">Mauritius</span></p>
-        <h3 class="db-name" id="db-mru-t">מאוריציוס</h3>
-        <p class="db-p">ריזורטים יוצאי דופן, טבע טרופי וחופשה שמרגישה כמו עולם אחר.</p>
-        <span class="btn db-btn is-soon">לגלות את מאוריציוס <em>העמוד בהכנה</em></span>
-      </div>
+  <article class="hd" id="db-mru" aria-labelledby="db-mru-t">
+    <picture class="hd-media" aria-hidden="true">
+      <source media="(max-width:700px)" srcset="img/hv-mru-m-720.webp 720w, img/hv-mru-m-1080.webp 1080w" sizes="100vw">
+      <img src="img/hv-mru-1600.webp" srcset="img/hv-mru-960.webp 960w, img/hv-mru-1600.webp 1600w, img/hv-mru-2048.webp 2048w" sizes="(max-width:1440px) 100vw, 1440px" alt="" width="2048" height="871" loading="lazy" decoding="async">
+    </picture>
+    <div class="hd-txt">
+      <p class="hd-en" lang="en">Mauritius</p>
+      <h3 class="hd-name" id="db-mru-t">מאוריציוס</h3>
+      <p class="hd-p">ריזורטים יוצאי דופן, טבע טרופי וחופשה שמרגישה כמו עולם אחר.</p>
+      <span class="btn hd-btn is-soon">לגלות את מאוריציוס <em>העמוד בהכנה</em></span>
     </div>
   </article>
 </section>
 
-<!-- למה Gili's Tours: שישה יתרונות, אייקוני קו דקים -->
-<section class="sec why-h" id="why" aria-labelledby="why-t">
+<!-- למה Gili's Tours: נקי, בלי כרטיסים, שישה אייקונים דקים בצבע חול ומשפט קצר -->
+<section class="sec hv-why" id="why" aria-labelledby="why-t">
   <div class="wrap">
     <div class="sec-h rv">
       <p class="eyebrow" lang="en">Why Gili’s Tours</p>
       <h2 id="why-t">למה מטיילים חוזרים אלינו שוב ושוב?</h2>
     </div>
-    <ul class="wh-g">
-      <li class="rv"><svg class="ic-l"><use href="#i-hand"/></svg><h3>הסכמים ומחירים מיוחדים</h3><p>אנחנו עובדים ישירות עם מלונות וספקים מקומיים ונהנים מהסכמים ומחירים מיוחדים שלא תמיד תמצאו באתרי ההזמנות.</p></li>
-      <li class="rv"><svg class="ic-l"><use href="#i-pin"/></svg><h3>מכירים את היעד באמת</h3><p>לא המלצות מגוגל. אנחנו מכירים את היעדים, המלונות, החוויות והאנשים שמאחוריהם.</p></li>
-      <li class="rv"><svg class="ic-l"><use href="#i-compass"/></svg><h3>חופשה שמתאימה לכם</h3><p>לא עוד חבילה מוכנה מראש. אנחנו מבינים איך אתם אוהבים לטייל ובונים את החופשה סביבכם.</p></li>
-      <li class="rv"><svg class="ic-l"><use href="#i-users"/></svg><h3>קשרים מקומיים של שנים</h3><p>הקשרים שלנו עם המלונות, הספקים והאנשים ביעד הם חלק גדול מהערך שאנחנו מביאים איתנו.</p></li>
-      <li class="rv"><svg class="ic-l"><use href="#i-headset"/></svg><h3>זמינות <span dir="ltr">24/7</span> במהלך החופשה</h3><p>גם אחרי שהזמנתם אנחנו כאן. יש לכם למי לפנות לפני החופשה, במהלכה ועד שאתם חוזרים הביתה.</p></li>
-      <li class="rv"><svg class="ic-l"><use href="#i-shield"/></svg><h3>אלפי הזמנות וניסיון של 5 שנים</h3><p>אלפי מטיילים כבר הזמינו דרכנו מלונות, אטרקציות וחוויות, ואנחנו יודעים כמה הפרטים הקטנים משנים חופשה שלמה.</p></li>
+    <ul class="hw-g">
+      <li class="rv"><svg class="ic-s"><use href="#i-tag"/></svg><h3>הסכמים ומחירים מיוחדים</h3><p>עובדים ישירות עם מלונות וספקים מקומיים.</p></li>
+      <li class="rv"><svg class="ic-s"><use href="#i-compass"/></svg><h3>מכירים את היעד באמת</h3><p>היכרות אמיתית עם המקומות שאנחנו ממליצים עליהם.</p></li>
+      <li class="rv"><svg class="ic-s"><use href="#i-heart"/></svg><h3>חופשה שמתאימה לכם</h3><p>לא חבילה מוכנה מראש, חופשה שנבנית סביבכם.</p></li>
+      <li class="rv"><svg class="ic-s"><use href="#i-hand"/></svg><h3>קשרים מקומיים של שנים</h3><p>האנשים והקשרים שלנו ביעד הם חלק מהחוויה.</p></li>
+      <li class="rv"><svg class="ic-s"><use href="#i-headset"/></svg><h3>זמינות <span dir="ltr">24/7</span> במהלך החופשה</h3><p>יש לכם למי לפנות גם כשאתם כבר בחופשה.</p></li>
+      <li class="rv"><svg class="ic-s"><use href="#i-users"/></svg><h3>אלפי הזמנות וניסיון של 5 שנים</h3><p>אלפי מטיילים כבר בחרו לטייל איתנו.</p></li>
     </ul>
   </div>
 </section>
 
-<!-- משפט גדול באמצע העמוד: הרבה לבן, המילים נדלקות בגלילה -->
-<section class="stmt" aria-label="המשפט שלנו">
-  <div class="wrap">
-    <span class="stmt-line" aria-hidden="true"></span>
-    <p class="stmt-p" id="stmt"><span class="stmt-a">מלונות ואטרקציות אפשר למצוא באינטרנט.</span> <span class="stmt-b">אבל ניסיון, קשרים מקומיים והיכרות אמיתית עם היעד נבנים במשך שנים.</span></p>
+<!-- המשפט הגדול: לבן על צילום ים רחב, וקו קצר מתחתיו -->
+<section class="hv-stmt" aria-label="המשפט שלנו">
+  <picture class="hv-stmt-media" aria-hidden="true">
+    <source media="(max-width:700px)" srcset="img/hv-stmt-m-720.webp 720w, img/hv-stmt-m-1080.webp 1080w" sizes="100vw">
+    <img src="img/hv-stmt-1600.webp" srcset="img/hv-stmt-960.webp 960w, img/hv-stmt-1600.webp 1600w, img/hv-stmt-2560.webp 2560w" sizes="100vw" alt="" width="2560" height="984" loading="lazy" decoding="async">
+  </picture>
+  <div class="wrap hv-stmt-in">
+    <p class="hv-stmt-p rv">מלונות ואטרקציות אפשר למצוא באינטרנט. <br class="br-d">אבל ניסיון, קשרים מקומיים והיכרות אמיתית <br class="br-d">עם היעד נבנים במשך שנים.</p>
+    <span class="hv-stmt-line rv" aria-hidden="true"></span>
   </div>
 </section>
 
-<!-- סימונה ואבישי -->
-<section class="sec about" id="about" aria-labelledby="about-t">
-  <div class="wrap ab-g">
-    <figure class="ab-img rv-img"><img src="img/founders-1200.webp" srcset="img/founders-720.webp 720w, img/founders-1200.webp 1200w" sizes="(max-width:900px) 100vw, 46vw" alt="סימונה ואבישי, מייסדי Gili’s Tours" width="1200" height="1004" loading="lazy" decoding="async"></figure>
-    <div class="ab-txt">
+<!-- סימונה ואבישי: התמונה שלהם משמאל, הטקסט מימין; "להכיר אותנו" פותח את ההמשך -->
+<section class="sec hv-ab" id="about" aria-labelledby="about-t">
+  <div class="wrap hv-ab-g">
+    <figure class="hv-ab-img rv-img"><img src="img/founders-1200.webp" srcset="img/founders-720.webp 720w, img/founders-1200.webp 1200w" sizes="(max-width:900px) 100vw, 46vw" alt="סימונה ואבישי, מייסדי Gili’s Tours" width="1200" height="1004" loading="lazy" decoding="async"></figure>
+    <div class="hv-ab-head">
       <p class="eyebrow rv" lang="en">Meet the founders</p>
       <h2 class="rv" id="about-t">סימונה ואבישי</h2>
-      <p class="ab-role rv">מייסדי <span lang="en">Gili’s Tours</span></p>
-      <div class="ab-body">
-        <p class="ab-big rv">אנחנו מאמינים שחופשה בלתי נשכחת מתחילה בלהכיר את המקום באמת.</p>
-        <p class="rv">לדעת איפה שווה לישון, על מה אפשר לוותר, לאיזה מפרץ להגיע דווקא בבוקר, איזה מלון באמת מתאים לכם, ובעיקר, להכיר את האנשים הנכונים בכל יעד.</p>
-        <p class="rv">וזה בדיוק מה שבנינו ב-<span lang="en">Gili’s Tours</span>.</p>
-        <p class="rv">הכול התחיל לפני 5 שנים בקורפו. הכרנו את האי לעומק, בנינו קשרים מקומיים, בדקנו מלונות, ספקים וחוויות בעצמנו ולמדנו את כל אותם פרטים קטנים שלא תמיד תמצאו באינטרנט, אבל יכולים לשנות חופשה שלמה.</p>
-        <p class="rv">עם השנים אלפי מטיילים עברו דרכנו, ומה שהתחיל באי אחד שאנחנו מכירים כמעט כמו בית הפך לדרך שבה אנחנו רוצים לגלות את העולם.</p>
-        <ul class="ab-tri rv">
+      <p class="hv-ab-role rv">מייסדי <span lang="en">Gili’s Tours</span></p>
+    </div>
+    <div class="hv-ab-txt">
+      <p class="hv-ab-big rv">אנחנו מאמינים שחופשה בלתי נשכחת מתחילה בלהכיר את המקום באמת.</p>
+      <p class="rv">לדעת איפה שווה לישון, על מה אפשר לוותר, לאיזה מפרץ להגיע דווקא בבוקר, איזה מלון באמת מתאים לכם, ובעיקר, להכיר את האנשים הנכונים בכל יעד.</p>
+      <p class="rv">וזה בדיוק מה שבנינו ב-<span lang="en">Gili’s Tours</span>.</p>
+      <div class="hv-ab-more" id="abMore" hidden>
+        <p>הכול התחיל לפני 5 שנים בקורפו. הכרנו את האי לעומק, בנינו קשרים מקומיים, בדקנו מלונות, ספקים וחוויות בעצמנו ולמדנו את כל אותם פרטים קטנים שלא תמיד תמצאו באינטרנט, אבל יכולים לשנות חופשה שלמה.</p>
+        <p>עם השנים אלפי מטיילים עברו דרכנו, ומה שהתחיל באי אחד שאנחנו מכירים כמעט כמו בית הפך לדרך שבה אנחנו רוצים לגלות את העולם.</p>
+        <ul class="hv-ab-tri">
           <li>לבחור פחות, אבל לבחור נכון.</li>
           <li>להכיר כל יעד באמת.</li>
           <li>ולבנות חופשה שמרגישה בדיוק שלכם.</li>
         </ul>
       </div>
+      <button class="btn hv-btn-out rv" id="abBtn" aria-expanded="false" aria-controls="abMore"><span>להכיר אותנו</span> <svg class="ic"><use href="#i-arrow"/></svg></button>
     </div>
   </div>
-
-  <!-- הסיפור של Summer all year: הפסקה שסימונה סימנה כחשובה -->
-  <div class="wrap sa" aria-labelledby="sa-t">
-    <div class="sa-txt">
-      <p class="eyebrow rv" lang="en">Summer all year</p>
-      <h3 class="sa-h rv" id="sa-t">עם השנים, <span lang="en">Gili’s Tours</span> גדלה יחד עם המטיילים שלנו!</h3>
-      <p class="rv">הם חזרו מקורפו, חזרו אלינו שוב ושוב, ושאלה אחת חזרה כל הזמן:</p>
-      <blockquote class="sa-q rv"><p>״איך ממשיכים לטייל איתכם גם ביעדים הבאים?״</p></blockquote>
-      <p class="rv">ההתרחבות של <span lang="en">Gili’s Tours</span> הגיעה מהשטח: מהשירות האישי, מהחיבור שנוצר עם המטיילים שלנו ובעיקר מהלקוחות שחוזרים אלינו שוב ושוב.</p>
-      <p class="rv">וכשחשבנו לאילו יעדים להתרחב, גילינו שהתשובה הייתה שם כל הזמן. הרי לקוחות שלנו מתחברים אלינו בגלל מי שאנחנו. אז שאלנו את עצמנו: מה אנחנו באמת אוהבים? מה מרגש אותנו?</p>
-      <p class="sa-strong rv">והתשובה הייתה פשוטה: אנחנו אנשים של קיץ! <br>זה ה-<span lang="en">DNA</span> שלנו וגם של העסק שלנו.</p>
-      <p class="rv">בכל שנה, כשהעונה בקורפו הייתה נגמרת, כבר היינו מחפשים את המקום הבא שיש בו שמש. עוד ים, עוד ימים ארוכים בחוץ, עוד קצת מהתחושה הזאת שאנחנו אף פעם לא רוצים שתיגמר.</p>
-      <p class="sa-strong rv">ואז הבנו שאנחנו לא צריכים להיפרד מהקיץ. <br>אנחנו פשוט יכולים לחיות אותו! כל השנה!</p>
-      <p class="rv">וככה נולד <span lang="en">SUMMER ALL YEAR</span>, לא כסלוגן, אלא כמהות של <span lang="en">Gili’s Tours</span>. מקורפו, יעד הבית שלנו, המשכנו לסיישל ולמאוריציוס, יעדים שבחרנו כי הם מרגישים בדיוק כמונו.</p>
-      <p class="rv">וכשהקיץ שלכם בקורפו נגמר, אנחנו כבר יודעים איפה השמש הבאה מחכה לכם.</p>
-    </div>
-    <figure class="sa-img rv-img"><img src="img/founders-boat-900.webp" alt="סימונה ואבישי על סירה במים הטורקיז של קורפו" width="900" height="1200" loading="lazy" decoding="async"></figure>
-  </div>
-  <p class="sa-end" lang="en" dir="ltr"><span class="sa-w">Corfu.</span> <span class="sa-w">Seychelles.</span> <span class="sa-w">Mauritius.</span> <strong class="sa-w">Summer all year.</strong></p>
 </section>
 
-<!-- אנחנו מכירים אתכם -->
-<section class="sec pers" aria-labelledby="pers-t">
-  <div class="wrap pers-g">
-    <figure class="pers-img rv-img"><img src="img/honeymoon-1200.webp" alt="זוג יושב על חוף בצל צוק, ליד המים" width="1200" height="800" loading="lazy" decoding="async"></figure>
-    <div class="pers-txt">
+<!-- Summer all year: פס צילום של דקל מעל הים, הכותרת הגדולה משמאל והטקסט מימין -->
+<section class="hv-sum" aria-labelledby="sum-t">
+  <div class="hv-sum-media" aria-hidden="true"><picture><source media="(max-width:700px)" srcset="img/hv-sum-m-600.webp 600w, img/hv-sum-m-940.webp 940w" sizes="100vw"><img src="img/hv-sum-1672.webp" srcset="img/hv-sum-960.webp 960w, img/hv-sum-1672.webp 1672w" sizes="100vw" alt="" width="1672" height="941" loading="lazy" decoding="async"></picture></div>
+  <div class="wrap hv-sum-in">
+    <div class="hv-sum-en" lang="en" dir="ltr">
+      <h2 class="hv-sum-t rv" id="sum-t"><span>Summer</span> <span>all year</span></h2>
+      <p class="hv-sum-pl rv">Corfu. Seychelles. Mauritius.</p>
+    </div>
+    <div class="hv-sum-he">
+      <p class="hv-sum-big rv">אנחנו אנשים של קיץ.</p>
+      <p class="rv">אחרי 5 שנים בקורפו הבנו שאנחנו לא רוצים להיפרד מהקיץ כשהעונה נגמרת.</p>
+      <p class="rv">וככה נולד <span lang="en">SUMMER ALL YEAR</span>, מקורפו, יעד הבית שלנו, המשכנו בחורף לסיישל ולמאוריציוס, כדי שתמיד נוכל לספק ללקוחות שלנו את התחושה הזאת שהקיץ לא נגמר!</p>
+    </div>
+  </div>
+</section>
+
+<!-- Personal travel: צילום לייפסטייל משמאל, הטקסט וארבע השאלות מימין -->
+<section class="sec hv-pers" aria-labelledby="pers-t">
+  <div class="wrap hv-pers-g">
+    <figure class="hv-pers-img rv-img"><img src="img/hv-pers-1200.webp" srcset="img/hv-pers-720.webp 720w, img/hv-pers-1200.webp 1200w" sizes="(max-width:900px) 100vw, 46vw" alt="מטיילת בכובע קש בבריכה מול הים" width="1200" height="1000" loading="lazy" decoding="async"></figure>
+    <div class="hv-pers-txt">
       <p class="eyebrow rv" lang="en">Personal travel</p>
-      <h2 class="rv" id="pers-t">להכיר את היעד זו רק חצי מהעבודה. <span class="h2-soft">החצי השני הוא להכיר אתכם.</span></h2>
-      <ul class="pers-q">
-        <li class="rv">איך אתם אוהבים לטייל?</li>
-        <li class="rv">מה חשוב לכם?</li>
-        <li class="rv">מה אתם רוצים להרגיש בחופשה?</li>
-        <li class="rv">ועל מה אתם לא מוכנים להתפשר?</li>
+      <h2 class="rv" id="pers-t">להכיר את היעד זו רק חצי מהעבודה. <br>החצי השני הוא להכיר אתכם.</h2>
+      <ul class="hp-q">
+        <li class="rv"><svg class="ic-s"><use href="#i-palm"/></svg>איך אתם אוהבים לטייל?</li>
+        <li class="rv"><svg class="ic-s"><use href="#i-heart"/></svg>מה חשוב לכם בחופשה?</li>
+        <li class="rv"><svg class="ic-s"><use href="#i-sun"/></svg>מה אתם רוצים להרגיש?</li>
+        <li class="rv"><svg class="ic-s"><use href="#i-case"/></svg>ועל מה אתם לא מוכנים להתפשר?</li>
       </ul>
-      <p class="pers-start rv">משם מתחיל התכנון שלנו.</p>
+      <p class="hp-start rv">משם מתחיל התכנון שלנו.</p>
       <p class="rv">במקום ללכת לאיבוד בין מאות מלונות ואלפי אפשרויות, אנחנו עוזרים לכם לבחור את מה שבאמת מתאים לכם.</p>
-      <p class="pers-end rv">כי החופשה הכי טובה היא לא בהכרח המלון הכי יקר או האטרקציה הכי מפורסמת. <strong>היא זו שמרגישה כאילו תכננו אותה בדיוק בשבילכם.</strong></p>
+      <p class="rv">כי החופשה הכי טובה היא לא בהכרח המלון הכי יקר או האטרקציה הכי מפורסמת.</p>
+      <p class="hp-end rv">היא זו שמרגישה כאילו תכננו אותה בדיוק בשבילכם.</p>
     </div>
   </div>
 </section>
 
-<!-- מה אפשר להזמין איתנו -->
-<section class="sec book" id="book" aria-labelledby="book-t">
+<!-- כל מה שצריך לחופשה אחת שלמה: ארבעה אזורים נקיים, צילום, אייקון וקצת טקסט -->
+<section class="sec hv-book" id="book" aria-labelledby="book-t">
   <div class="wrap">
     <div class="sec-h rv">
-      <p class="eyebrow" lang="en">What we book</p>
       <h2 id="book-t">כל מה שצריך לחופשה אחת שלמה.</h2>
       <p class="sec-lead">מהמלון ועד לרגעים שתזכרו הרבה אחרי שחזרתם הביתה.</p>
     </div>
-    <ul class="bk-g">
-      <li class="bk rv"><figure class="bk-img"><img src="img/htl-infinity-720.webp" alt="" width="720" height="540" loading="lazy" decoding="async"></figure><h3>מלונות וריזורטים</h3><p>מלונות 4 ו-5 כוכבים שנבחרו בקפידה.</p></li>
-      <li class="bk rv"><figure class="bk-img"><img src="img/exp-sunset-720.webp" alt="" width="720" height="900" loading="lazy" decoding="async"></figure><h3>חוויות ואטרקציות</h3><p>ים, יאכטות, סיורים, קולינריה וחוויות מיוחדות בכל יעד.</p></li>
-      <li class="bk rv"><figure class="bk-img"><img src="img/family-720.webp" alt="" width="720" height="480" loading="lazy" decoding="async"></figure><h3>חופשות בהתאמה אישית</h3><p>אנחנו מחברים את כל הפרטים לחופשה אחת שמתאימה לכם.</p></li>
-      <li class="bk rv"><figure class="bk-img"><img src="img/cat-groups-720.webp" alt="" width="720" height="468" loading="lazy" decoding="async"></figure><h3>נופשי חברה וקבוצות</h3><p>תכנון והפקת חוויות לחברות, קבוצות וארגונים.</p></li>
+    <ul class="hb-g">
+      <li class="hb rv"><figure class="hb-img"><img src="img/htl-infinity-720.webp" alt="" width="720" height="540" loading="lazy" decoding="async"></figure><div class="hb-txt"><svg class="ic-s"><use href="#i-bed"/></svg><div><h3>מלונות וריזורטים</h3><p>מלונות 4 ו-5 כוכבים שנבחרו בקפידה.</p></div></div></li>
+      <li class="hb rv"><figure class="hb-img"><img src="img/exp-sunset-720.webp" alt="" width="720" height="900" loading="lazy" decoding="async"></figure><div class="hb-txt"><svg class="ic-s"><use href="#i-boat"/></svg><div><h3>חוויות ואטרקציות</h3><p>ים, יאכטות, סיורים, קולינריה וחוויות מיוחדות בכל יעד.</p></div></div></li>
+      <li class="hb rv"><figure class="hb-img"><img src="img/family-720.webp" alt="" width="720" height="480" loading="lazy" decoding="async"></figure><div class="hb-txt"><svg class="ic-s"><use href="#i-palm"/></svg><div><h3>חופשות בהתאמה אישית</h3><p>אנחנו מחברים את כל הפרטים לחופשה אחת שמתאימה לכם.</p></div></div></li>
+      <li class="hb rv"><figure class="hb-img"><img src="img/cat-groups-720.webp" alt="" width="720" height="468" loading="lazy" decoding="async"></figure><div class="hb-txt"><svg class="ic-s"><use href="#i-users"/></svg><div><h3>נופשי חברה וקבוצות</h3><p>תכנון והפקת חוויות לחברות, קבוצות וארגונים.</p></div></div></li>
     </ul>
   </div>
 </section>
 
-<!-- המספרים שלנו: נספרים כשמגיעים אליהם -->
-<section class="nums" aria-labelledby="nums-t">
-  <div class="nums-bg" aria-hidden="true"></div>
+<!-- המספרים שלנו: מינימליסטי, מספרים גדולים שנספרים מ-1 כשמגיעים אליהם -->
+<section class="sec hv-nums" aria-labelledby="nums-t">
   <div class="wrap">
-    <h2 class="sr" id="nums-t">המספרים שלנו</h2>
-    <ul class="nums-g">
-      <li class="rv"><b class="n" data-to="5" aria-hidden="true">5</b><span class="sr">5</span><span class="n-l">שנים של ניסיון</span></li>
-      <li class="rv"><b class="n" data-to="1600" data-suf="+" dir="ltr" aria-hidden="true">1,600+</b><span class="sr">1,600+</span><span class="n-l">הזמנות בעונת 2026</span></li>
-      <li class="rv"><b class="n n-word">אלפי</b><span class="n-l">מטיילים שבחרו לטייל איתנו</span></li>
-      <li class="rv"><b class="n" dir="ltr">24/7</b><span class="n-l">זמינות במהלך החופשה</span></li>
+    <h2 class="hv-nums-t rv" id="nums-t">המספרים שלנו</h2>
+    <ul class="hn-g">
+      <li class="rv"><b class="hn" data-to="5" aria-hidden="true">5</b><span class="sr">5</span><span class="hn-l">שנים של ניסיון</span></li>
+      <li class="rv"><b class="hn" data-to="1600" data-suf="+" dir="ltr" aria-hidden="true">1,600+</b><span class="sr">1,600+</span><span class="hn-l">הזמנות בעונת 2026</span></li>
+      <li class="rv"><b class="hn hn-word">אלפי מטיילים</b><span class="hn-l">שבחרו לטייל איתנו</span></li>
+      <li class="rv"><b class="hn" dir="ltr">24/7</b><span class="hn-l">זמינות במהלך החופשה</span></li>
     </ul>
   </div>
 </section>
 
-<!-- ביקורות: רק צילומי מסך אמיתיים. עד שיגיעו, מסגרות שמורות ומסומנות -->
-<section class="sec revs" aria-labelledby="revs-t">
+<!-- Traveler stories: רק ביקורות אמיתיות. עד שיגיעו, מסגרות שמורות ומסומנות, בלי טקסט מומצא -->
+<section class="sec hv-revs" id="revs" aria-labelledby="revs-t">
   <div class="wrap">
     <div class="sec-h rv">
       <p class="eyebrow" lang="en">Traveler stories</p>
       <h2 id="revs-t">אל תקשיבו רק לנו.</h2>
       <p class="sec-lead">תראו מה המטיילים שלנו מספרים.</p>
     </div>
-    <div class="rs-g">
-      <figure class="rs rv"><svg class="rs-q" aria-hidden="true"><use href="#i-quote"/></svg><figcaption><b>כאן ייכנס צילום מסך של ביקורת אמיתית</b><small>מגוגל או מלקוחות, כמו שהיא, באישור הכותבים</small></figcaption></figure>
-      <figure class="rs rs-tall rv"><svg class="rs-q" aria-hidden="true"><use href="#i-quote"/></svg><figcaption><b>כאן ייכנס צילום מסך של ביקורת אמיתית</b><small>מגוגל או מלקוחות, כמו שהיא, באישור הכותבים</small></figcaption></figure>
-      <figure class="rs rv"><svg class="rs-q" aria-hidden="true"><use href="#i-quote"/></svg><figcaption><b>כאן ייכנס צילום מסך של ביקורת אמיתית</b><small>מגוגל או מלקוחות, כמו שהיא, באישור הכותבים</small></figcaption></figure>
+    <div class="hr-g" id="hrG">
+      <figure class="hr rv"><svg class="hr-q" aria-hidden="true"><use href="#i-quote"/></svg><figcaption><b>כאן תיכנס ביקורת אמיתית</b><small>מגוגל או מהמטיילים שלכם, כמו שהיא, באישור הכותבים</small></figcaption></figure>
+      <figure class="hr rv"><svg class="hr-q" aria-hidden="true"><use href="#i-quote"/></svg><figcaption><b>כאן תיכנס ביקורת אמיתית</b><small>מגוגל או מהמטיילים שלכם, כמו שהיא, באישור הכותבים</small></figcaption></figure>
+      <figure class="hr rv"><svg class="hr-q" aria-hidden="true"><use href="#i-quote"/></svg><figcaption><b>כאן תיכנס ביקורת אמיתית</b><small>מגוגל או מהמטיילים שלכם, כמו שהיא, באישור הכותבים</small></figcaption></figure>
     </div>
-    <p class="rev-note rv">מקום שמור: באתר יוצגו רק ביקורות אמיתיות, כצילומי מסך, בלי טקסט שנכתב בשם הלקוחות.</p>
-    <div class="sec-cta rv"><span class="btn btn-ghost is-soon">לכל הביקורות <em>בהכנה</em></span></div>
+    <div class="hr-dots" id="hrDots" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
+    <div class="sec-cta rv"><span class="btn hv-btn-out is-soon">לכל הביקורות <em>בהכנה</em></span></div>
   </div>
 </section>
 
-<!-- באנר גדול לקראת הסוף -->
-<section class="bnr" id="plan" aria-labelledby="bnr-t">
-  <div class="bnr-media" aria-hidden="true"><img src="img/banner-1600.webp" srcset="img/banner-1600.webp 1600w, img/banner-2560.webp 2560w" sizes="100vw" alt="" width="2560" height="1440" loading="lazy" decoding="async"></div>
-  <div class="wrap bnr-in">
-    <h2 class="bnr-lines" id="bnr-t"><span class="rv">אפשר להזמין טיסה.</span> <span class="rv">אפשר להזמין מלון.</span> <span class="rv">אפשר אפילו לתכנן הכול לבד.</span></h2>
-    <p class="bnr-p rv">אבל לדעת מה לבחור, את מי להכיר ואיך לחבר את הכול לחופשה בלתי נשכחת, זה כבר הסיפור שלנו.</p>
-    <a class="btn btn-gold btn-lg bnr-btn rv" href="https://wa.me/972544050071?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%9B%D7%A0%D7%9F%20%D7%90%D7%99%D7%AA%D7%9B%D7%9D%20%D7%90%D7%AA%20%D7%94%D7%97%D7%95%D7%A4%D7%A9%D7%94%20%D7%A9%D7%9C%D7%A0%D7%95" target="_blank" rel="noopener">בואו נתכנן את החופשה שלכם <svg class="ic"><use href="#i-arrow"/></svg></a>
+<!-- באנר: עוד צילום וואו, שורות לבנות וכפתור לטופס -->
+<section class="hv-bnr" id="plan" aria-labelledby="bnr-t">
+  <picture class="hv-bnr-media" aria-hidden="true">
+    <source media="(max-width:700px)" srcset="img/hv-bnr-m-720.webp 720w, img/hv-bnr-m-1080.webp 1080w" sizes="100vw">
+    <img src="img/hv-bnr-1600.webp" srcset="img/hv-bnr-960.webp 960w, img/hv-bnr-1600.webp 1600w, img/hv-bnr-2560.webp 2560w" sizes="100vw" alt="" width="2560" height="1163" loading="lazy" decoding="async">
+  </picture>
+  <div class="wrap hv-bnr-in">
+    <h2 class="hv-bnr-lines" id="bnr-t"><span class="rv">אפשר להזמין טיסה.</span> <span class="rv">אפשר להזמין מלון.</span> <span class="rv">אפשר אפילו לתכנן הכול לבד.</span></h2>
+    <p class="hv-bnr-p rv">אבל לדעת מה לבחור, את מי להכיר ואיך לחבר את הכול לחופשה בלתי נשכחת, זה כבר הסיפור שלנו.</p>
+    <a class="btn btn-lg hv-btn-main rv" href="#lead">בואו נתכנן את החופשה שלכם <svg class="ic"><use href="#i-arrow"/></svg></a>
+  </div>
+</section>
+
+<!-- טופס השארת פרטים: לבן וקרם, נקי; עוד לא מחובר, שום פרט לא נשלח -->
+<section class="sec hv-lead" id="lead" aria-labelledby="lead-t">
+  <div class="wrap">
+    <form class="hl" id="leadForm" novalidate>
+      <div class="sec-h rv">
+        <h2 id="lead-t">בואו נתכנן את החופשה שלכם</h2>
+      </div>
+      <fieldset class="hl-dest">
+        <legend>לאן תרצו לטוס?</legend>
+        <div class="hl-chips">
+          <label class="hl-chip"><input type="radio" name="dest" value="קורפו"><span>קורפו</span></label>
+          <label class="hl-chip"><input type="radio" name="dest" value="סיישל"><span>סיישל</span></label>
+          <label class="hl-chip"><input type="radio" name="dest" value="מאוריציוס"><span>מאוריציוס</span></label>
+          <label class="hl-chip"><input type="radio" name="dest" value="עדיין מתלבטים"><span>עדיין מתלבטים</span></label>
+        </div>
+      </fieldset>
+      <div class="hl-row">
+        <label class="hl-fld"><span>שם <i aria-hidden="true">*</i></span><input name="name" autocomplete="name" required aria-required="true"></label>
+        <label class="hl-fld"><span>טלפון <i aria-hidden="true">*</i></span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" required aria-required="true"></label>
+        <label class="hl-fld"><span>תאריך הגעה</span><input name="date" type="date"></label>
+        <label class="hl-fld"><span>מספר נוסעים</span><input name="pax" type="number" min="1" max="99" inputmode="numeric"></label>
+      </div>
+      <div class="hl-checks">
+        <label class="hl-chk"><input type="checkbox" name="flight"><span class="hl-box" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg></span><span>יש לי כרטיס טיסה</span></label>
+        <label class="hl-chk"><input type="checkbox" name="wa_service"><span class="hl-box" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg></span><span>אני מאשר/ת ל-<span lang="en">Gili’s Tours</span> ליצור איתי קשר באמצעות <span lang="en">WhatsApp</span> בנוגע לפנייה שהשארתי, לתכנון החופשה, להצעת המחיר ולשירות שביקשתי.</span></label>
+        <label class="hl-chk"><input type="checkbox" name="wa_marketing"><span class="hl-box" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg></span><span>אני מעוניין/ת לקבל מ-<span lang="en">Gili’s Tours</span> באמצעות <span lang="en">WhatsApp</span> גם מבצעים, הטבות, הצעות ועדכונים שיווקיים. ניתן להסיר את ההסכמה בכל עת במענה ״הסר״.</span></label>
+        <label class="hl-chk"><input type="checkbox" name="privacy" required aria-required="true"><span class="hl-box" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg></span><span>קראתי ואני מאשר/ת את <a href="#" class="hl-lnk">מדיניות הפרטיות</a> <i aria-hidden="true">*</i></span></label>
+      </div>
+      <div class="hl-send">
+        <button class="btn btn-lg btn-navy" type="submit">שלחו לי הצעה לחופשה <svg class="ic"><use href="#i-arrow"/></svg></button>
+        <p class="hl-msg" id="leadMsg" role="status" aria-live="polite"></p>
+      </div>
+    </form>
   </div>
 </section>
 
@@ -292,13 +334,13 @@
       <p>קורפו בקיץ. סיישל ומאוריציוס בחורף. חופשות בהתאמה אישית ביעדים שאנחנו מכירים באמת.</p>
     </div>
     <nav class="ftr-col" aria-label="יעדים"><h3>יעדים</h3><a href="#db-corfu">קורפו</a><a href="seychelles.html">סיישל</a><a href="#db-mru">מאוריציוס</a></nav>
-    <nav class="ftr-col" aria-label="מידע"><h3>מידע</h3><a href="#book">מלונות</a><a href="#">מדריכים</a><a href="#about">אודות</a><a href="#" lang="en">English</a></nav>
+    <nav class="ftr-col" aria-label="מידע"><h3>מידע</h3><a href="#book">חוויות ומלונות</a><a href="#about">אודות</a><a href="#revs">ביקורות</a><a href="#" lang="en">English</a></nav>
     <div class="ftr-col"><h3>יצירת קשר</h3><a href="tel:+972524650594" dir="ltr">052-4650594</a><a href="https://wa.me/972544050071" target="_blank" rel="noopener">וואטסאפ: <span class="nw" dir="ltr">054-4050071</span></a></div>
   </div>
   <div class="wrap ftr-bot"><p><span dir="ltr">© 2026 Gili’s Tours</span></p><p><a href="#">הצהרת נגישות</a> · <a href="#">מדיניות פרטיות</a> · <a href="https://liavmatzri.co.il" rel="noopener" target="_blank">עוצב ופותח על ידי ליאב מצרי</a></p></div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/972544050071?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%97%D7%95%D7%A4%D7%A9%D7%94" target="_blank" rel="noopener" aria-label="שיחה בוואטסאפ"><svg class="ic"><use href="#i-wa"/></svg><span class="wa-lbl">דברו איתנו בוואטסאפ</span></a>
+<a class="wa-float" href="https://wa.me/972544050071?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%97%D7%95%D7%A4%D7%A9%D7%94" target="_blank" rel="noopener" aria-label="שיחה בוואטסאפ"><svg class="ic"><use href="#i-wa"/></svg></a>
 
 <script src="js/home.js" defer></script>
 </body>
