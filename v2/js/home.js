@@ -7,7 +7,8 @@
   // פתיחה: הטקסט נכנס ברכות כשהצילום מוכן
   const hero = $('#hHero'), himg = $('.hv-hero-media img');
   const ready = () => hero.classList.add('ready');
-  if (himg.complete) requestAnimationFrame(ready); else { himg.addEventListener('load', ready, { once: true }); setTimeout(ready, 1200); }
+  if (himg.complete) requestAnimationFrame(ready); else himg.addEventListener('load', ready, { once: true });
+  setTimeout(ready, 1200);
 
   // הדר: לבן אחרי הפתיחה, מתחבא בגלילה למטה וחוזר למעלה
   const hdr = $('#hdr'), wa = $('.wa-float');
