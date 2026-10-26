@@ -57,13 +57,14 @@
 .js .hv-hero.ready .hv-hero-in>:nth-child(4){transition-delay:.4s}
 
 /* היעדים: שלוש תמונות אחת מתחת לשנייה, לא ברוחב המסך, רווח לבן ביניהן. הטקסט בצד שמאל כמו בסקיצה */
-.hv-dest{display:grid;gap:clamp(16px,2vw,28px);max-width:calc(1440px + var(--pad)*2);margin-inline:auto;padding:clamp(16px,2vw,28px) var(--pad)/* qa-allow: sec (הרווח הלבן בין היעדים ומסביבם, כמו בבקשה שלה) */}
-.hd{position:relative;overflow:hidden;min-height:clamp(420px,40vw,600px);display:flex;align-items:center;justify-content:flex-end;color:#fff;isolation:isolate;border-radius:4px}
+/* פסי היעד ברוחב מלא (כמו בסקיצת הדסקטופ שלה), עם פס לבן דק בין יעד ליעד */
+.hv-dest{display:grid;gap:10px;padding-block:10px/* qa-allow: sec (הפס הלבן הדק בין היעדים, כמו בסקיצה) */}
+.hd{position:relative;overflow:hidden;min-height:clamp(420px,40vw,600px);display:flex;align-items:center;justify-content:flex-end;color:#fff;isolation:isolate}
 .hd-media{position:absolute;inset:-6% 0;z-index:-2}
 .hd-media img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease)}
 .hd:hover .hd-media img{transform:scale(1.03)}
 .hd::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(6,30,46,.62),rgba(6,30,46,.34) 34%,rgba(6,30,46,0) 62%)}
-.hd-txt{width:min(470px,100%);margin-left:clamp(28px,5vw,72px);text-align:left/* qa-allow: physical (הטקסט בצד שמאל של התמונה, כמו בסקיצה של סימונה) */}
+.hd-txt{width:min(470px,100%);margin-left:max(var(--pad),calc((100% - var(--max))/2));text-align:left/* qa-allow: physical (הטקסט בצד שמאל של התמונה, כמו בסקיצה של סימונה) */}
 .hd-en{font:500 15px/1 var(--serif);letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:12px}
 .hd-name{font-size:clamp(56px,6.6vw,100px);line-height:1;color:#fff;letter-spacing:-.01em;text-shadow:0 2px 24px rgba(0,0,0,.18)}
 .hd-home{font-size:clamp(19px,1.6vw,23px);font-weight:500;margin-top:10px}
