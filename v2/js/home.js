@@ -10,12 +10,12 @@
   if (himg.complete) requestAnimationFrame(ready); else himg.addEventListener('load', ready, { once: true });
   setTimeout(ready, 1200);
 
-  // הדר: לבן אחרי הפתיחה, מתחבא בגלילה למטה וחוזר למעלה
-  const hdr = $('#hdr'), wa = $('.wa-float');
+  // הדר: לבן כשטקסט הפתיחה מגיע אליו (שלא יעלה על הכפתורים), מתחבא בגלילה למטה וחוזר למעלה
+  const hdr = $('#hdr'), wa = $('.wa-float'), htitle = $('#h-t');
   let lastY = scrollY;
   const onScroll = () => {
     const y = scrollY, vh = innerHeight;
-    hdr.classList.toggle('scrolled', y > vh * 0.82);
+    hdr.classList.toggle('scrolled', y > vh * 0.82 || (y > 40 && htitle.getBoundingClientRect().top < hdr.offsetHeight + 16));
     hdr.classList.toggle('hide', y > vh && y > lastY && !document.body.classList.contains('nav-open'));
     wa.classList.toggle('show', y > vh * 0.8);
     lastY = y;

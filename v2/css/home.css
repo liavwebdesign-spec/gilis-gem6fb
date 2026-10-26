@@ -70,7 +70,7 @@
 .hd-p{font-size:17px;line-height:1.65;color:rgba(255,255,255,.95);margin-top:14px}
 .hd-btn{margin-top:24px;background:#fff;color:var(--navy);min-width:200px}
 .hd-btn:hover{background:var(--cream)}
-.hd-btn.is-soon{background:rgba(255,255,255,.88);color:var(--navy);border-color:transparent}
+.hd-btn.is-soon{background:#fff;color:var(--navy);border-color:transparent}
 .hd-btn.is-soon em{background:var(--cream-2);color:var(--navy)}
 .js .hd .hd-txt>*{opacity:0;transform:translateY(16px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .js .hd.in .hd-txt>*{opacity:1;transform:none}
@@ -147,14 +147,18 @@
 .hp-start{font-size:19px!important;font-weight:700;color:var(--navy)}
 .hp-end{color:var(--navy);font-weight:500}
 
-/* כל מה שצריך: ארבעה אזורים נקיים */
-.hv-book{background:var(--paper)}
+/* כל מה שצריך: ארבעה אזורים נקיים על שמנת, עם צל עלה דקל בפינה כמו בסקיצת המובייל */
+.hv-book{background:var(--cream);position:relative;overflow:hidden;isolation:isolate}
+.hb-palm{position:absolute;top:-24px;left:-36px;z-index:-1;width:clamp(240px,26vw,420px);aspect-ratio:900/1348;background:url(../img/palm-shadow-900.webp) no-repeat 0 0/contain;opacity:.42;transform-origin:0 0;animation:hbSway 11s ease-in-out infinite alternate;pointer-events:none/* qa-allow: physical (הצל יורד מהפינה השמאלית העליונה, כמו בסקיצה) */}
+@keyframes hbSway{from{transform:rotate(-1.2deg)}to{transform:rotate(1.4deg) translateY(4px)}}
 .hb-g{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 .hb{background:var(--paper);border-radius:4px;overflow:hidden;box-shadow:0 1px 2px rgba(20,48,77,.05),0 14px 34px -18px rgba(20,48,77,.22)}
 .hb-img{overflow:hidden}
 .hb-img img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform 1.2s var(--ease)}
 .hb:hover .hb-img img{transform:scale(1.04)}
-.hb-txt{display:flex;gap:16px;align-items:flex-start;padding:24px 24px 28px}
+.hb-txt{display:flex;gap:16px;align-items:center;padding:24px 24px 28px}
+.hb-txt>div{flex:1}
+.hb-txt .ic-s{order:2}
 .hb-txt .ic-s{width:38px;height:38px}
 .hb h3{font-size:17px;margin-bottom:4px}
 .hb p{font-size:14.5px;line-height:1.6}
@@ -260,8 +264,8 @@
   .hv-btns{flex-direction:column;align-items:stretch;gap:12px;max-width:340px;margin-inline:auto}
   .hv-btns .btn{min-width:0}
   .hv-corner{display:none}
-  .hv-dest{padding-inline:12px;gap:12px}
-  .hd{min-height:0;aspect-ratio:4/5;align-items:flex-end}
+  .hv-dest{padding-inline:0;gap:8px;padding-block:8px}
+  .hd{min-height:0;aspect-ratio:4/5;align-items:flex-end;border-radius:0}
   .hd::after{background:linear-gradient(180deg,rgba(6,30,46,0) 30%,rgba(6,30,46,.66))}
   .hd-txt{width:100%;margin:0;padding:28px 24px}
   .hd-name{font-size:clamp(50px,15vw,68px)}
@@ -286,6 +290,7 @@
   .hp-q{grid-template-columns:1fr 1fr;row-gap:24px}
   .hp-q li:nth-child(3){border-inline-start:0}
   .hb-g{grid-template-columns:1fr;gap:18px}
+  .hb-palm{width:230px;top:-12px;left:-28px;opacity:.5/* qa-allow: physical (אותה פינה שמאלית כמו בסקיצה) */}
   .hb-img img{aspect-ratio:16/9}
   .hn-g{grid-template-columns:1fr 1fr;row-gap:40px}
   .hn-g li:nth-child(3){border-inline-start:0}
@@ -303,6 +308,6 @@
   .hl-send .btn{min-width:0;width:100%}
 }
 @media (prefers-reduced-motion:reduce){
-  .hv-hero-media img{animation:none;transform:none}
+  .hv-hero-media img,.hb-palm{animation:none;transform:none}
   .js .hv-hero-in>*,.js .hd .hd-txt>*{opacity:1;transform:none;transition:none}
 }
