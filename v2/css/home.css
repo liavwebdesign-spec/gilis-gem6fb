@@ -170,8 +170,8 @@
 .hn-g{display:grid;grid-template-columns:repeat(4,1fr)}
 .hn-g li{display:flex;flex-direction:column;align-items:center;text-align:center;padding:8px 16px;border-inline-start:1px solid var(--sand-lt)/* qa-allow: line (מפרידים דקים בין המספרים) */}
 .hn-g li:first-child{border-inline-start:0}
-.hn{font:300 clamp(54px,5.6vw,80px)/1 var(--serif);color:var(--sand);font-variant-numeric:lining-nums tabular-nums;min-height:1em}
-.hn-word{font:500 clamp(26px,2.4vw,34px)/1 var(--ff);color:var(--sand);display:flex;align-items:center;min-height:clamp(54px,5.6vw,80px)}
+/* ארבעת הערכים באותו פונט ובאותו גודל: "אלפי" הוא מילה, והסריף האנגלי בלי עברית היה מחליף לה פונט */
+.hn{font:400 clamp(46px,4.4vw,64px)/1 var(--ff);letter-spacing:-.01em;color:var(--sand);font-variant-numeric:lining-nums tabular-nums;min-height:1em}
 .hn-l{margin-top:16px;font-size:15.5px;font-weight:500;color:var(--navy)}
 
 /* ביקורות: מסגרות שמורות, נקיות */
