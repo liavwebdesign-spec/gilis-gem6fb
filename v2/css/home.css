@@ -178,7 +178,7 @@
 /* המספרים: מינימליסטי */
 .hv-nums{background:var(--cream)}
 .hv-nums-t{text-align:center;margin-bottom:clamp(40px,4vw,56px)}
-.hn-g{display:grid;grid-template-columns:repeat(4,1fr)}
+.hn-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
 .hn-g li{display:flex;flex-direction:column;align-items:center;text-align:center;padding:8px 16px;border-inline-start:1px solid var(--sand-lt)/* qa-allow: line (מפרידים דקים בין המספרים) */}
 .hn-g li:first-child{border-inline-start:0}
 /* ארבעת הערכים באותו פונט ובאותו גודל: "אלפי" הוא מילה, והסריף האנגלי בלי עברית היה מחליף לה פונט */
@@ -250,6 +250,9 @@
   .home .nav ul{gap:24px}
 }
 @media (max-width:960px){
+  /* המספרים: שניים בשורה כבר בטאבלט, אחרת 13,000+ יוצא מהעמודה */
+  .hn-g{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}
+  .hn-g li:nth-child(3){border-inline-start:0}
   /* טלפון וטאבלט: הלוגו במרכז, ההמבורגר בימין, כמו בסקיצת המובייל */
   .home .logo{position:absolute;left:50%;transform:translateX(-50%);width:164px}
   .home .hdr.scrolled .logo{width:112px}
@@ -309,8 +312,9 @@
   .hb-g{grid-template-columns:1fr;gap:18px}
   .hb-palm{width:230px;top:-70px;left:-28px;opacity:.5/* qa-allow: physical (אותה פינה שמאלית כמו בסקיצה) */}
   .hb-img img{aspect-ratio:16/9}
-  .hn-g{grid-template-columns:1fr 1fr;row-gap:40px}
-  .hn-g li:nth-child(3){border-inline-start:0}
+  /* 13,000+ רחב: המספר קטן עם המסך, שלא ידחוף את העמוד הצידה */
+  .hn-g li{padding-inline:8px}
+  .hn{font-size:min(46px,10vw)}
   .hr-g{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:calc(var(--pad)*-1);padding-inline:var(--pad);scrollbar-width:none}
   .hr-g::-webkit-scrollbar{display:none}
   .hr{flex:0 0 86%;scroll-snap-align:center;min-height:220px}
