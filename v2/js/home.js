@@ -10,6 +10,25 @@
   if (himg.complete) requestAnimationFrame(ready); else himg.addEventListener('load', ready, { once: true });
   setTimeout(ready, 1200);
 
+  // הסרטון של סימונה: רק בטלפון (הוא לאורך), עם כפתור עצירה; בהפחתת תנועה נשאר הצילום
+  const vid = $('#heroVid'), vtg = $('#vidToggle');
+  if (!reduce && matchMedia('(max-width:700px)').matches) {
+    vid.src = vid.dataset.src;
+    hero.classList.add('has-vid');
+    vtg.hidden = false;
+    const setVid = play => {
+      play ? vid.play().catch(() => {}) : vid.pause();
+      vtg.classList.toggle('paused', !play);
+      vtg.setAttribute('aria-pressed', !play);
+      vtg.setAttribute('aria-label', play ? 'עצירת הסרטון' : 'הפעלת הסרטון');
+      $('use', vtg).setAttribute('href', play ? '#i-pause' : '#i-play');
+    };
+    setVid(true);
+    vtg.addEventListener('click', () => setVid(vid.paused));
+    // לא מנגנים כשהפתיחה מחוץ למסך
+    new IntersectionObserver(([e]) => { if (!vtg.classList.contains('paused')) e.isIntersecting ? vid.play().catch(() => {}) : vid.pause(); }).observe(hero);
+  }
+
   // הדר: לבן כשטקסט הפתיחה מגיע אליו (שלא יעלה על הכפתורים), מתחבא בגלילה למטה וחוזר למעלה
   const hdr = $('#hdr'), wa = $('.wa-float'), htitle = $('#h-t');
   let lastY = scrollY;
@@ -98,12 +117,12 @@
   const form = $('#leadForm'), msg = $('#leadMsg');
   form.addEventListener('submit', e => {
     e.preventDefault();
-    const bad = ['name', 'phone', 'privacy'].map(n => form.elements[n]).filter(el => el.type === 'checkbox' ? !el.checked : !el.value.trim());
+    const bad = ['name', 'phone', 'wa_service', 'privacy'].map(n => form.elements[n]).filter(el => el.type === 'checkbox' ? !el.checked : !el.value.trim());
     $$('input', form).forEach(el => el.removeAttribute('aria-invalid'));
     bad.forEach(el => el.setAttribute('aria-invalid', 'true'));
     if (bad.length) {
       msg.className = 'hl-msg err';
-      msg.textContent = 'חסרים פרטים: שם, טלפון ואישור מדיניות הפרטיות.';
+      msg.textContent = 'חסרים פרטים: שם, טלפון ושני האישורים המסומנים בכוכבית.';
       bad[0].focus();
       return;
     }
