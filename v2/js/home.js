@@ -12,7 +12,7 @@
 
   // הסרטון של סימונה: רק בטלפון (הוא לאורך), עם כפתור עצירה; בהפחתת תנועה נשאר הצילום
   const vid = $('#heroVid'), vtg = $('#vidToggle');
-  if (!reduce && matchMedia('(max-width:700px)').matches) {
+  if (!reduce && !window.gilisStill && matchMedia('(max-width:700px)').matches) {
     vid.src = vid.dataset.src;
     hero.classList.add('has-vid');
     vtg.hidden = false;
@@ -25,23 +25,22 @@
     };
     setVid(true);
     vtg.addEventListener('click', () => setVid(vid.paused));
+    // "עצירת אנימציות" בהתאמות התצוגה עוצר גם את הסרטון
+    document.addEventListener('a11y:still', e => { if (e.detail) setVid(false); });
     // לא מנגנים כשהפתיחה מחוץ למסך
     new IntersectionObserver(([e]) => { if (!vtg.classList.contains('paused')) e.isIntersecting ? vid.play().catch(() => {}) : vid.pause(); }).observe(hero);
   }
 
   // הדר: לבן כשטקסט הפתיחה מגיע אליו (שלא יעלה על הכפתורים), מתחבא בגלילה למטה וחוזר למעלה
-  const hdr = $('#hdr'), wa = $('.wa-float'), htitle = $('#h-t');
+  const hdr = $('#hdr'), htitle = $('#h-t');
   let lastY = scrollY;
   const onScroll = () => {
     const y = scrollY, vh = innerHeight;
     hdr.classList.toggle('scrolled', y > vh * 0.82 || (y > 40 && htitle.getBoundingClientRect().top < hdr.offsetHeight + 16));
     hdr.classList.toggle('hide', y > vh && y > lastY && !document.body.classList.contains('nav-open'));
-    wa.classList.toggle('show', y > vh * 0.8);
     lastY = y;
     parallax();
   };
-
-  new IntersectionObserver(([e]) => wa.classList.toggle('near-end', e.isIntersecting)).observe($('.ftr'));
 
   // תפריט טלפון
   const burger = $('#burger');
@@ -68,7 +67,7 @@
   // תמונות הרוחב זזות לאט מול הגלילה
   const par = $$('.hd-media, .hv-stmt-media, .hv-sum-media, .hv-bnr-media');
   function parallax() {
-    if (reduce) return;
+    if (reduce || document.documentElement.classList.contains('a11y-still')) return;
     const vh = innerHeight;
     par.forEach(m => {
       const r = m.parentElement.getBoundingClientRect();

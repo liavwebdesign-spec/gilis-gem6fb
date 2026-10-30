@@ -5,23 +5,14 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
   // הדר: לבן אחרי ההירו, מתחבא בגלילה למטה וחוזר למעלה
-  const hdr = $('#hdr'), wa = $('.wa-float');
+  const hdr = $('#hdr');
   let lastY = scrollY;
   const onScroll = () => {
     const y = scrollY;
     hdr.classList.toggle('scrolled', y > 40);
     hdr.classList.toggle('hide', y > 600 && y > lastY && !document.body.classList.contains('nav-open'));
-    wa.classList.toggle('show', y > innerHeight * 0.8);
     lastY = y;
   };
-
-  // הכפתור הצף יורד כשהטופס או הפוטר במסך (יש שם וואטסאפ משלהם)
-  const ends = new Set();
-  const endIO = new IntersectionObserver(es => {
-    es.forEach(e => e.isIntersecting ? ends.add(e.target) : ends.delete(e.target));
-    wa.classList.toggle('near-end', ends.size > 0);
-  });
-  ['#leadForm', '.ftr'].forEach(s => endIO.observe($(s)));
 
   // תפריט טלפון
   const burger = $('#burger');
@@ -45,8 +36,10 @@
     tg.setAttribute('aria-label', play ? 'עצירת הסרטון' : 'הפעלת הסרטון');
     tg.querySelector('use').setAttribute('href', play ? '#i-pause' : '#i-play');
   };
-  if (reduce) { vid.removeAttribute('autoplay'); setVid(false); }
+  if (reduce || window.gilisStill) { vid.removeAttribute('autoplay'); setVid(false); }
   tg.addEventListener('click', () => setVid(vid.paused));
+  // "עצירת אנימציות" בהתאמות התצוגה עוצר גם את הסרטונים
+  document.addEventListener('a11y:still', e => { if (e.detail) { setVid(false); $$('video').forEach(v => v.pause()); } });
 
   // כניסות
   const io = new IntersectionObserver(es => es.forEach(e => {

@@ -54,7 +54,7 @@
 .hv-sub{font-size:16px;line-height:1.7;color:rgba(255,255,255,.92);margin-bottom:40px;text-shadow:0 1px 14px rgba(0,0,0,.25)}
 .hv-btns{display:flex;justify-content:center;flex-wrap:wrap;gap:16px}
 .hv-btns .btn{min-width:236px}
-.hv-corner{position:absolute;bottom:clamp(32px,5vh,56px);font:400 14px/1.45 var(--ff);letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.92)}
+.hv-corner{position:absolute;bottom:clamp(100px,12vh,120px);font:400 14px/1.45 var(--ff);letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.92)}
 .hv-corner::after{content:"";display:block;width:36px;height:1px;background:rgba(255,255,255,.7);margin-top:16px}
 .hv-tag{left:var(--pad)/* qa-allow: physical (פינה שמאלית כמו בסקיצה) */}
 .hv-places{right:var(--pad);text-align:right/* qa-allow: physical (פינה ימנית כמו בסקיצה) */}
@@ -274,7 +274,7 @@
   .home .logo{width:152px}
   .hv-hero{place-items:end center}
   .hv-hero::after{background:linear-gradient(180deg,rgba(4,28,40,.35),rgba(4,28,40,0) 22%,rgba(4,28,40,.15) 42%,rgba(4,28,40,.62) 100%)}
-  .hv-hero-in{padding:clamp(112px,14vh,144px) 20px 40px}
+  .hv-hero-in{padding:clamp(112px,14vh,144px) 20px 88px}/* מקום לשני הכפתורים הקבועים בתחתית */
   .hv-hero-in{width:100%}
   .hv-intro,.hv-sub{text-wrap:balance}
   .hv-title{font-size:clamp(34px,10.6vw,58px);margin-bottom:20px}
