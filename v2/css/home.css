@@ -164,22 +164,27 @@
 .hp-start{font-size:19px!important;font-weight:700;color:var(--navy)}
 .hp-end{color:var(--navy);font-weight:500}
 
-/* כל מה שצריך: ארבעה אזורים נקיים על שמנת, עם צל עלה דקל בפינה כמו בסקיצת המובייל.
-   הסקשן שמעל באותה שמנת, אז הצל עולה לתוכו ומתמוסס למעלה בלי קו חיתוך */
-.hv-book{background:var(--cream);position:relative;overflow:hidden;overflow:clip visible;isolation:isolate}
-.hb-palm{position:absolute;top:-130px;left:-36px;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 30%);mask-image:linear-gradient(to bottom,transparent,#000 30%);z-index:-1;width:clamp(240px,26vw,420px);aspect-ratio:900/1348;background:url(../img/palm-shadow-900.webp) no-repeat 0 0/contain;opacity:.42;transform-origin:0 0;animation:hbSway 11s ease-in-out infinite alternate;pointer-events:none/* qa-allow: physical (הצל יורד מהפינה השמאלית העליונה, כמו בסקיצה) */}
+/* השירותים (מ-1.11 מיד אחרי היעדים): ארבעה אזורים נקיים על שמנת, עם צל עלה דקל בפינה כמו בסקיצת המובייל.
+   מעל יש עכשיו תמונות יעד, אז הצל מתחיל בתוך הסקשן ומתמוסס למעלה במסכה, בלי קו חיתוך */
+.hv-book{background:var(--cream);position:relative;overflow:hidden;isolation:isolate}
+.hb-palm{position:absolute;top:0;left:-36px;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 30%);mask-image:linear-gradient(to bottom,transparent,#000 30%);z-index:-1;width:clamp(240px,26vw,420px);aspect-ratio:900/1348;background:url(../img/palm-shadow-900.webp) no-repeat 0 0/contain;opacity:.42;transform-origin:0 0;animation:hbSway 11s ease-in-out infinite alternate;pointer-events:none/* qa-allow: physical (הצל יורד מהפינה השמאלית העליונה, כמו בסקיצה) */}
 @keyframes hbSway{from{transform:rotate(-1.2deg)}to{transform:rotate(1.4deg) translateY(4px)}}
 .hb-g{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.hb{background:var(--paper);border-radius:4px;overflow:hidden;box-shadow:0 1px 2px rgba(20,48,77,.05),0 14px 34px -18px rgba(20,48,77,.22)}
+.hb{display:flex;flex-direction:column;background:var(--paper);border-radius:4px;overflow:hidden;box-shadow:0 1px 2px rgba(20,48,77,.05),0 14px 34px -18px rgba(20,48,77,.22)}
 .hb-img{overflow:hidden}
 .hb-img img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform 1.2s var(--ease)}
 .hb:hover .hb-img img{transform:scale(1.04)}
-.hb-txt{display:flex;gap:16px;align-items:center;padding:24px 24px 28px}
+.hb-txt{display:flex;gap:16px;align-items:flex-start;padding:24px 24px 0}
 .hb-txt>div{flex:1}
 .hb-txt .ic-s{order:2}
 .hb-txt .ic-s{width:38px;height:38px}
 .hb h3{font-size:17px;margin-bottom:4px}
 .hb p{font-size:14.5px;line-height:1.6}
+.hb .hb-lead{font-weight:500;color:var(--navy);line-height:1.5}
+.hb .hb-p{padding:12px 24px 28px}
+
+/* קורפו: סרט לבן באלכסון בפינה של התמונה, "יעד הבית שלנו" (סימונה 1.11) */
+.hd-ribbon{position:absolute;z-index:2;top:40px;left:-62px;width:260px;padding-block:10px;background:#fff;color:var(--navy);text-align:center;font-size:15px;font-weight:500;letter-spacing:.02em;transform:rotate(-45deg);box-shadow:0 8px 22px -10px rgba(0,0,0,.4);pointer-events:none/* qa-allow: physical (הפינה השמאלית של התמונה, כמו שביקשה) */}
 
 /* המספרים: מינימליסטי */
 .hv-nums{background:var(--cream)}
@@ -296,6 +301,7 @@
   .hd-name{font-size:clamp(50px,15vw,68px)}
   .hd-p{font-size:16px}
   .hd-btn{margin-top:20px}
+  .hd-ribbon{top:26px;left:-58px;width:220px;padding-block:8px;font-size:13px/* qa-allow: physical (אותה פינה שמאלית) */}
   .hw-g{grid-template-columns:1fr 1fr;row-gap:0}
   .hw-g li{padding:24px 12px;border-inline-start:0;border-top:1px solid var(--sand-lt)/* qa-allow: line (רשת שתי עמודות עם מפרידים, כמו בסקיצה) */}
   .hw-g li:nth-child(-n+2){border-top:0}
@@ -316,7 +322,7 @@
   .hp-q li:nth-child(3){border-inline-start:0}
   .hv-pers{padding-bottom:24px}
   .hb-g{grid-template-columns:1fr;gap:18px}
-  .hb-palm{width:230px;top:-70px;left:-28px;opacity:.5/* qa-allow: physical (אותה פינה שמאלית כמו בסקיצה) */}
+  .hb-palm{width:230px;top:0;left:-28px;opacity:.5/* qa-allow: physical (אותה פינה שמאלית כמו בסקיצה) */}
   .hb-img img{aspect-ratio:16/9}
   /* 13,000+ רחב: המספר קטן עם המסך, שלא ידחוף את העמוד הצידה */
   .hn-g li{padding-inline:8px}
