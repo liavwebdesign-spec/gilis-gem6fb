@@ -12,7 +12,37 @@
 
   // הסרטון של סימונה: רק בטלפון (הוא לאורך), עם כפתור עצירה; בהפחתת תנועה נשאר הצילום
   const vid = $('#heroVid'), vtg = $('#vidToggle');
-  if (!reduce && !window.gilisStill && matchMedia('(max-width:700px)').matches) {
+  // תצוגה לסימונה (1.11): עם ?hero=1..5 בכתובת מופיע בורר בין חמשת הסרטונים ששלחה 29.10; בלי הפרמטר הכל כרגיל
+  const VIDS = { 1: 'o1', 2: 'm2', 3: 'o3', 4: 'o4', 5: 'o5' };
+  const qs = new URLSearchParams(location.search), pick = qs.get('hero');
+  const phone = matchMedia('(max-width:700px)').matches;
+  const setSrc = n => {
+    const k = VIDS[n];
+    vid.poster = k === 'm2' ? 'img/hv-hero-v2-poster.webp' : `img/hv-hero-${k}-poster.webp`;
+    vid.dataset.src = `media/home-hero-${k}.mp4`;
+  };
+  if (pick !== null) {
+    let cur = VIDS[pick] ? +pick : 2;
+    setSrc(cur);
+    const bar = document.createElement('div');
+    bar.className = 'hv-vid-pick';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'בחירת סרטון לפתיחה');
+    bar.innerHTML = '<span>סרטון</span>' + Object.keys(VIDS).map(n => `<button type="button" data-n="${n}" aria-pressed="${n == cur}">${n}</button>`).join('')
+      + (phone ? '' : '<small>הסרטונים לאורך, לצפייה פתחו מהטלפון</small>');
+    hero.append(bar);
+    bar.addEventListener('click', e => {
+      const b = e.target.closest('button');
+      if (!b || +b.dataset.n === cur) return;
+      cur = +b.dataset.n;
+      $$('button', bar).forEach(x => x.setAttribute('aria-pressed', x === b));
+      qs.set('hero', cur);
+      history.replaceState(null, '', `?${qs}${location.hash}`);
+      setSrc(cur);
+      if (hero.classList.contains('has-vid')) { vid.src = vid.dataset.src; if (!vtg.classList.contains('paused')) vid.play().catch(() => {}); }
+    });
+  }
+  if (!reduce && !window.gilisStill && phone) {
     vid.src = vid.dataset.src;
     hero.classList.add('has-vid');
     vtg.hidden = false;
